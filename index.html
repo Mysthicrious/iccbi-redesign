@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>Immaculate Conception College of Balayan, Inc. — Redesign Concept (Blue & White)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,9 @@
   .c-muted{color:var(--muted);}.c-dark-muted{color:var(--dark-muted);}
   .c-soft-slate{color:var(--soft-slate);}.c-parchment{color:var(--parchment);}
 
-  *{box-sizing:border-box;} html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--parchment);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;}
-  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{margin:0;background:var(--parchment);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;touch-action:manipulation;}
+  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;touch-action:manipulation;}
   h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;letter-spacing:-0.01em;}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
@@ -79,11 +79,16 @@
   .nav-links .apply{background:var(--blue);padding:10px 18px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;white-space:nowrap;}
   .nav-links .apply::after{display:none;}
   .nav-links .apply:hover{background:var(--blue-deep);}
-  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;touch-action:manipulation;}
   .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .3s ease,opacity .3s ease;}
   .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .hamburger.open span:nth-child(2){opacity:0;}
   .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* Drawer head (mobile only) + backdrop */
+  .drawer-head{display:none;}
+  .nav-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:94;}
+  .nav-backdrop.show{opacity:1;pointer-events:auto;}
 
   .nav-links > li.has-sub::after{content:"";position:absolute;top:100%;left:-14px;right:-14px;height:18px;}
   .sub-menu{
@@ -131,6 +136,10 @@
   .has-sub:focus-within .sub-menu .grid a:nth-child(4){transition-delay:.24s,.24s,0s,0s;}
   .has-sub:hover .sub-menu .grid a:nth-child(5),
   .has-sub:focus-within .sub-menu .grid a:nth-child(5){transition-delay:.3s,.3s,0s,0s;}
+
+  /* Mobile chevron (hidden on desktop) */
+  .mobile-submenu-toggle{display:none;align-items:center;justify-content:center;width:22px;height:22px;font-size:.62rem;color:var(--blue);pointer-events:none;transition:transform .3s ease;flex-shrink:0;}
+  .mobile-submenu-toggle.open{transform:rotate(180deg);}
 
   .hero{position:relative;background:radial-gradient(120% 140% at 15% 0%,var(--ink-2) 0%,var(--ink) 55%,var(--blue-deep) 100%);overflow:hidden;padding:96px 0 80px;}
   .hero::before{content:"";position:absolute;inset:0;background-image:url('assets/images/Imaculate.png');background-size:cover;background-position:center;background-repeat:no-repeat;filter:brightness(.15) saturate(.2);opacity:.5;z-index:0;pointer-events:none;}
@@ -373,20 +382,6 @@
   .guide-list p{margin:0;font-size:.85rem;line-height:1.55;}
   .guide-panel .btn-primary{width:100%;justify-content:center;margin-top:18px;padding:11px 20px;font-size:.82rem;}
 
-  /* Mobile submenu toggle */
-  .mobile-submenu-toggle{
-    display:none;
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:0;
-    margin-left:6px;
-    font-size:.7rem;
-    color:var(--ink);
-    transition:transform .3s ease;
-  }
-  .mobile-submenu-toggle.open{transform:rotate(180deg);}
-
   @media (max-width:1100px){
     .nav-links{gap:16px;}
     .nav-links > li > a{font-size:.84rem;}
@@ -394,95 +389,102 @@
     .brand-text .sub{font-size:.52rem;}
     .sub-menu .grid{grid-template-columns:repeat(3,1fr);}
   }
+
+  /* ══════════════════ MOBILE DRAWER ══════════════════ */
   @media (max-width:992px){
-    nav.main{gap:12px;}
+    nav.main{padding:10px 16px;gap:12px;}
+    .brand-text .name{font-size:.82rem;}
+    .brand-text .sub{font-size:.5rem;}
+    .hamburger{display:block;z-index:51;}
+
     .nav-links{
-      position:fixed;
-      inset:0 0 0 auto;
-      top:0;
-      height:100vh;
-      width:78%;
-      max-width:360px;
-      background:var(--parchment);
-      flex-direction:column;
-      align-items:flex-start;
-      padding:100px 28px 28px;
-      gap:0;
-      transform:translateX(100%);
-      transition:transform .3s cubic-bezier(.22,1,.36,1);
-      box-shadow:-10px 0 30px rgba(0,0,0,.15);
-      overflow-y:auto;
+      position:fixed;top:0;right:0;bottom:0;
+      height:auto;width:min(320px,88vw);
+      background:var(--white);
+      flex-direction:column;align-items:stretch;gap:0;
+      padding:0;margin:0;
+      transform:translateX(105%);
+      transition:transform .35s cubic-bezier(.22,1,.36,1);
+      box-shadow:-24px 0 48px rgba(2,6,23,.22);
+      overflow-y:auto;overflow-x:hidden;
+      z-index:95;
     }
     .nav-links.open{transform:translateX(0);}
-    .nav-links > li{
-      width:100%;
+
+    /* ── drawer head: [X]  logo ── */
+    .drawer-head{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 14px 12px 16px;
       border-bottom:1px solid var(--rule);
-      padding:16px 0;
+      position:sticky;top:0;background:var(--white);z-index:2;
     }
-    .nav-links > li:last-child{border-bottom:none;}
+    .drawer-close{
+      width:38px;height:38px;flex-shrink:0;
+      border:1px solid var(--rule);border-radius:50%;
+      background:var(--parchment);color:var(--ink);
+      font-size:1rem;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      transition:background .2s ease,transform .2s ease;
+      touch-action:manipulation;
+    }
+    .drawer-close:hover{background:var(--parchment-deep);transform:scale(1.05);}
+    .drawer-brand{display:flex;align-items:center;text-decoration:none;min-width:0;text-align:right;}
+    .drawer-brand .name{font-size:.8rem;white-space:normal;line-height:1.15;}
+    .drawer-brand .sub{font-size:.48rem;margin-top:2px;}
+
+    /* ── menu rows: compact ── */
+    .nav-links > li{width:auto;border-bottom:1px solid var(--rule);padding:0;}
     .nav-links > li > a{
-      font-size:1.05rem;
-      font-weight:600;
-      display:flex;
-      align-items:center;
+      font-size:.95rem;font-weight:600;white-space:normal;
+      padding:15px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
       width:100%;
     }
     .nav-links > li > a::after{display:none;}
-    .hamburger{display:block;z-index:100;}
     .nav-links > li.has-sub::after{display:none;}
-    
+
     .mobile-submenu-toggle{display:inline-flex;}
-    
+
+    /* ── accordion submenu ── */
     .sub-menu{
-      position:static;
-      transform:none;
-      opacity:0;
-      pointer-events:none;
-      max-height:0;
-      overflow:hidden;
-      background:transparent;
-      border:none;
-      box-shadow:none;
-      padding:0;
-      margin:0;
-      transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .3s ease;
+      position:static;transform:none;opacity:1;pointer-events:auto;
+      background:var(--parchment);
+      border:none;box-shadow:none;padding:0;margin:0;
+      max-height:0;overflow:hidden;
+      transition:max-height .45s cubic-bezier(.22,1,.36,1);
     }
-    .sub-menu.open{
-      opacity:1;
-      pointer-events:auto;
-      max-height:600px;
-      padding:12px 0 4px 0;
-    }
+    .sub-menu.open{max-height:520px;}
     .sub-menu .menu-head{display:none;}
-    .sub-menu .grid{
-      grid-template-columns:1fr;
-      gap:8px;
-      padding:0;
-    }
+    .sub-menu .grid{grid-template-columns:1fr;gap:0;padding:4px 0 12px;}
     .sub-menu .grid a{
-      opacity:1;
-      transform:none;
-      border:none;
-      background:var(--white);
-      padding:14px 16px;
-      box-shadow:0 2px 8px rgba(0,0,0,.06);
-      border-radius:4px;
+      opacity:1;transform:none;border:none;border-radius:0;
+      background:transparent;box-shadow:none;
+      padding:10px 20px 10px 34px;position:relative;
     }
-    .sub-menu .grid a .t{
-      font-size:.95rem;
-      margin-bottom:4px;
+    .sub-menu .grid a::before{
+      content:"";position:absolute;left:20px;top:19px;
+      width:5px;height:5px;border-radius:50%;background:var(--sky);
     }
+    .sub-menu .grid a .t{font-size:.88rem;margin-bottom:2px;}
     .sub-menu .grid a .t::before{display:none;}
-    .sub-menu .grid a:hover{
-      background:var(--parchment-deep);
-      box-shadow:0 4px 12px rgba(0,0,0,.1);
-    }
+    .sub-menu .grid a .d{font-size:.72rem;line-height:1.45;color:var(--dark-muted);}
+    .sub-menu .grid a:hover{background:var(--parchment-deep);box-shadow:none;}
     .sub-menu .grid a:hover .t{padding-left:0;}
-    .sub-menu .grid a .d{
-      font-size:.78rem;
-      line-height:1.5;
+
+    /* ── pinned apply button ── */
+    .apply-item{
+      position:sticky;bottom:0;margin-top:auto;
+      background:var(--white);
+      border-bottom:none;border-top:1px solid var(--rule);
+      padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));
+      box-shadow:0 -10px 24px rgba(15,23,42,.08);
+    }
+    .apply-item .apply{
+      display:flex;justify-content:center;align-items:center;
+      width:100%;padding:14px 18px;font-size:.75rem;border-radius:3px;
     }
   }
+
   @media (max-width:960px){
     .num-grid{grid-template-columns:repeat(2,1fr);}
     .num-cell:nth-child(3)::before{display:none;}
@@ -513,11 +515,13 @@
     .footer-grid{grid-template-columns:1fr;gap:32px;}
   }
   @media (max-width:560px){
+    .utility-bar .wrap{justify-content:center;text-align:center;}
     .accred-grid{grid-template-columns:1fr;}
     .cert-meta{grid-template-columns:1fr 1fr;gap:12px;}
   }
   @media (max-width:420px){
     .cert-meta{grid-template-columns:1fr;}
+    .brand-text .name{font-size:.72rem;}
   }
 </style>
 </head>
@@ -540,8 +544,7 @@
 <header class="site">
   <nav class="main wrap">
     <a href="index.html" class="brand">
-      <!-- ══ REAL LOGO: when you have the logo file, delete the two comment marks
-           around the line below and it will appear (put file at assets/images/logo.png) -->
+      <!-- ══ REAL LOGO: uncomment when ready (assets/images/logo.png) -->
       <!-- <img src="assets/images/logo.png" alt="ICCBI Logo"> -->
       <span class="brand-text">
         <span class="name c-ink">Immaculate Conception College of Balayan</span>
@@ -549,11 +552,20 @@
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
+      <li class="drawer-head">
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+        <a href="index.html" class="drawer-brand" tabindex="-1" aria-hidden="true">
+          <span class="brand-text">
+            <span class="name c-ink">Immaculate Conception College of Balayan</span>
+            <span class="sub c-blue">Augustinian Recollect Sisters</span>
+          </span>
+        </a>
+      </li>
       <li><a href="index.html" class="c-ink active-page">Home</a></li>
       <li class="has-sub">
         <a href="#about" class="c-ink" id="aboutLink">
           About
-          <button class="mobile-submenu-toggle" id="mobileSubmenuToggle" aria-label="Toggle submenu">▼</button>
+          <span class="mobile-submenu-toggle" id="mobileSubmenuToggle" aria-hidden="true">▼</span>
         </a>
         <div class="sub-menu" id="subMenu">
           <div class="wrap">
@@ -589,13 +601,14 @@
       <li><a href="academics.html" class="c-ink">Academics</a></li>
       <li><a href="campus.html" class="c-ink">Campus</a></li>
       <li><a href="contact.html" class="c-ink">Contact</a></li>
-      <li><a class="apply c-white" href="https://iccbalayan.edu.ph/registration-forms/">Apply Now</a></li>
+      <li class="apply-item"><a class="apply c-white" href="https://iccbalayan.edu.ph/registration-forms/">Apply Now</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </nav>
 </header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <section class="hero">
   <div class="wrap">
@@ -874,7 +887,7 @@
   <div class="wrap">
     <div class="footer-grid" data-reveal-stagger>
       <div class="footer-brand" data-reveal="slide-left">
-        <!-- ══ REAL LOGO (footer): uncomment when ready — it turns white automatically -->
+        <!-- ══ REAL LOGO (footer): uncomment when ready -->
         <!-- <img src="assets/images/logo.png" alt="ICCBI Logo"> -->
         <div>
           <span class="name c-frost" style="font-family:'Fraunces',serif;font-weight:600;">Immaculate Conception College of Balayan, Inc.</span>
@@ -973,7 +986,7 @@
     <li><span class="gnum c-blue">1</span><p class="c-ink-soft">Use the top menu to jump straight to Academics or Campus.</p></li>
     <li><span class="gnum c-blue">2</span><p class="c-ink-soft">On mobile, tap "About" to expand the submenu with Our Chronicle, School Seal, Mission & Vision, and Core Values.</p></li>
     <li><span class="gnum c-blue">3</span><p class="c-ink-soft">In Accreditations, click any logo card to view the full certificate.</p></li>
-    <li><span class="gnum c-blue">4</span><p class="c-ink-soft">Ready to enroll? Tap Apply for Admission anytime — it's always one click away.</p></li>
+    <li><span class="gnum c-blue">4</span><p class="c-ink-soft">Ready to enroll? The Apply button is always pinned at the bottom of the menu.</p></li>
   </ul>
   <a class="btn btn-primary c-ink" href="https://iccbalayan.edu.ph/registration-forms/">Apply for Admission</a>
 </div>
@@ -987,6 +1000,15 @@
   setHeaderBottom();
   window.addEventListener('resize', setHeaderBottom);
   window.addEventListener('scroll', setHeaderBottom, {passive:true});
+
+  /* ── Prevent zoom (pinch / double-tap / gesture) on mobile ── */
+  document.addEventListener('gesturestart', e => e.preventDefault());
+  document.addEventListener('gesturechange', e => e.preventDefault());
+  document.addEventListener('gestureend', e => e.preventDefault());
+  document.addEventListener('dblclick', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0')) e.preventDefault();
+  });
 
   function parseCertTitle(title){
     const emParts = title.split(/\s*—\s*/);
@@ -1146,96 +1168,69 @@
     });
   }
 
-  // Hamburger menu
+  /* ══════════ MOBILE DRAWER ══════════ */
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  
-  hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    
-    // Prevent body scroll when menu is open
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('open') && 
-        !navLinks.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  });
-
-  // Mobile submenu toggle
-  const mobileSubmenuToggle = document.getElementById('mobileSubmenuToggle');
+  const drawerClose = document.getElementById('drawerClose');
+  const navBackdrop = document.getElementById('navBackdrop');
   const subMenu = document.getElementById('subMenu');
   const aboutLink = document.getElementById('aboutLink');
-  
-  mobileSubmenuToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = subMenu.classList.toggle('open');
-    mobileSubmenuToggle.classList.toggle('open');
-    mobileSubmenuToggle.setAttribute('aria-expanded', isOpen);
-  });
+  const subToggleIcon = document.getElementById('mobileSubmenuToggle');
+  const isMobile = () => window.matchMedia('(max-width:992px)').matches;
 
-  // Prevent about link default behavior on mobile
+  function setSubMenu(open){
+    subMenu.classList.toggle('open', open);
+    subToggleIcon.classList.toggle('open', open);
+  }
+  function openNav(){
+    navLinks.classList.add('open');
+    navBackdrop.classList.add('show');
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    drawerClose.focus();
+  }
+  function closeNav(){
+    if (!navLinks.classList.contains('open')) return;
+    navLinks.classList.remove('open');
+    navBackdrop.classList.remove('show');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    setSubMenu(false);
+  }
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.contains('open') ? closeNav() : openNav();
+  });
+  drawerClose.addEventListener('click', closeNav);
+  navBackdrop.addEventListener('click', closeNav);
+
+  // "About" row toggles the submenu on mobile
   aboutLink.addEventListener('click', (e) => {
-    if (window.innerWidth <= 992) {
+    if (isMobile()) {
       e.preventDefault();
-      mobileSubmenuToggle.click();
+      setSubMenu(!subMenu.classList.contains('open'));
     }
   });
 
-  // Close menu when clicking any nav link (except submenu toggle)
-  navLinks.querySelectorAll('a:not(.mobile-submenu-toggle)').forEach(a => {
-    a.addEventListener('click', () => {
-      if (window.innerWidth <= 992) {
-        navLinks.classList.remove('open');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        
-        // Close submenu if open
-        if (subMenu.classList.contains('open')) {
-          subMenu.classList.remove('open');
-          mobileSubmenuToggle.classList.remove('open');
-        }
-      }
-    });
+  // Any real link inside the drawer closes it
+  navLinks.querySelectorAll('a').forEach(a => {
+    if (a === aboutLink || a.classList.contains('drawer-brand')) return;
+    a.addEventListener('click', () => closeNav());
   });
 
-  // Close menu on escape key
+  // Escape closes drawer
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      closeNav();
       hamburger.focus();
     }
   });
 
-  // Reset menu state on resize
+  // Reset on resize to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 992) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      subMenu.classList.remove('open');
-      mobileSubmenuToggle.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (!isMobile()) closeNav();
   });
 
   const guideToggle = document.getElementById('guideToggle');
