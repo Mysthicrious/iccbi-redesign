@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus & Facilities — Immaculate Conception College of Balayan, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&family=UnifrakturCook:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#274fab; --ink-2:#1E293B; --ink-soft:#131313;
+    --parchment:#EFF6FF; --parchment-deep:#DBEAFE; --paper:#F8FAFC;
+    --blue:#1d93d8; --blue-deep:#1E3A8A;
+    --sky:#60A5FA; --sky-light:#93C5FD; --teal:#006f8a;
+    --gold:#D9972B;
+    --rule: rgba(15,23,42,0.14);
+    --shadow: 0 18px 40px -20px rgba(15,23,42,0.35);
+    --white:#FFFFFF; --frost:#F0F9FF; --light-slate:#E2E8F0;
+    --slate:#CBD5E1; --muted:#94A3B8; --dark-muted:#64748B; --soft-slate:#BFDBFE;
+  }
+  .c-ink{color:var(--ink);}.c-ink-2{color:var(--ink-2);}.c-ink-soft{color:var(--ink-soft);}
+  .c-blue{color:var(--blue);}.c-blue-deep{color:var(--blue-deep);}
+  .c-sky{color:var(--sky);}.c-sky-light{color:var(--sky-light);}
+  .c-teal{color:var(--teal);}.c-white{color:var(--white);}.c-frost{color:var(--frost);}
+  .c-light-slate{color:var(--light-slate);}.c-slate{color:var(--slate);}
+  .c-muted{color:var(--muted);}.c-dark-muted{color:var(--dark-muted);}
+  .c-soft-slate{color:var(--soft-slate);}.c-parchment{color:var(--parchment);}
+
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--parchment);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
+
+  [data-reveal]{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;}
+  [data-reveal="fade-up"]{transform:translateY(40px);}
+  [data-reveal="fade-up"].revealed{opacity:1;transform:translateY(0);}
+  [data-reveal-stagger] > [data-reveal]:nth-child(1){transition-delay:0s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(2){transition-delay:0.08s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(3){transition-delay:0.16s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(4){transition-delay:0.24s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(5){transition-delay:0.32s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(6){transition-delay:0.4s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(7){transition-delay:0.48s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(8){transition-delay:0.56s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(9){transition-delay:0.64s;}
+
+  .hero-enter{opacity:0;transform:translateY(30px);animation:heroEnter 1s cubic-bezier(.22,1,.36,1) forwards;}
+  .hero-enter-delay-1{animation-delay:.2s;} .hero-enter-delay-2{animation-delay:.4s;} .hero-enter-delay-3{animation-delay:.6s;}
+  @keyframes heroEnter{to{opacity:1;transform:translateY(0);}}
+
+  .utility-bar{background:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+  .utility-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;flex-wrap:wrap;gap:8px;}
+  .utility-bar a{text-decoration:none;opacity:.85;} .utility-bar a:hover{opacity:1;}
+  .utility-left{display:flex;gap:20px;flex-wrap:wrap;}
+  .utility-right{display:flex;gap:16px;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(239,246,255,.97);border-bottom:1px solid var(--rule);}
+  nav.main{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 32px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+  .brand img{width:48px;height:48px;object-fit:contain;flex-shrink:0;}
+  .brand-text{line-height:1.1;display:flex;flex-direction:column;justify-content:center;}
+  .brand-text .name{font-family:'UnifrakturCook','Fraunces',serif;font-size:clamp(.78rem,1.7vw,1.05rem);font-weight:700;display:block;white-space:nowrap;letter-spacing:0;}
+  .brand-text .sub{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:3px;}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0;}
+  .nav-links > li{position:relative;}
+  .nav-links > li > a{text-decoration:none;font-size:.88rem;font-weight:500;padding:8px 0;position:relative;white-space:nowrap;}
+  .nav-links > li > a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--sky);transition:right .25s ease;}
+  .nav-links > li:hover > a::after{right:0;}
+  .nav-links > li > a.active-page::after{right:0;background:var(--blue);}
+  .nav-links .apply{background:var(--blue);padding:10px 18px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;white-space:nowrap;}
+  .nav-links .apply::after{display:none;}
+  .nav-links .apply:hover{background:var(--blue-deep);}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
+
+  .nav-links > li.has-sub::after{content:"";position:absolute;top:100%;left:-14px;right:-14px;height:18px;}
+  .sub-menu{
+    position:fixed;left:0;right:0;top:var(--header-h,64px);
+    background:var(--paper);border-bottom:1px solid var(--rule);
+    box-shadow:0 30px 50px -30px rgba(15,23,42,.35);
+    padding:34px 0 40px;opacity:0;pointer-events:none;transform:translateY(-10px);
+    transition:opacity .28s ease,transform .28s ease;z-index:49;
+  }
+  .has-sub:hover .sub-menu,.has-sub:focus-within .sub-menu{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .sub-menu .menu-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;}
+  .sub-menu .menu-head .note{font-size:.8rem;color:var(--muted);}
+  .sub-menu .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .sub-menu .grid a{display:block;padding:18px;border-radius:3px;border:1px solid var(--rule);background:var(--white);text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease,border-color .2s ease,box-shadow .2s ease;}
+  .sub-menu .grid a .t{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:6px;position:relative;padding-left:0;}
+  .sub-menu .grid a .t::before{content:"";position:absolute;left:0;top:50%;width:0;height:2px;background:var(--sky);transition:width .25s ease;}
+  .sub-menu .grid a .d{display:block;font-family:'Poppins',sans-serif;font-size:.8rem;line-height:1.55;color:var(--ink-soft);}
+  .sub-menu .grid a:hover{border-color:var(--sky);box-shadow:var(--shadow);}
+  .sub-menu .grid a:hover .t{padding-left:26px;}
+  .sub-menu .grid a:hover .t::before{width:16px;}
+  .sub-menu .grid a.active-sub{border-color:var(--blue);}
+  .sub-menu .grid a.active-sub .t{color:var(--blue);}
+  .has-sub:hover .sub-menu .grid a,.has-sub:focus-within .sub-menu .grid a{opacity:1;transform:translateY(0);}
+  .has-sub:hover .sub-menu .grid a:nth-child(1),.has-sub:focus-within .sub-menu .grid a:nth-child(1){transition-delay:.06s,.06s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(2),.has-sub:focus-within .sub-menu .grid a:nth-child(2){transition-delay:.12s,.12s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(3),.has-sub:focus-within .sub-menu .grid a:nth-child(3){transition-delay:.18s,.18s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(4),.has-sub:focus-within .sub-menu .grid a:nth-child(4){transition-delay:.24s,.24s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(5),.has-sub:focus-within .sub-menu .grid a:nth-child(5){transition-delay:.3s,.3s,0s,0s;}
+
+  .page-hero{position:relative;background:radial-gradient(120% 140% at 15% 0%,var(--ink-2) 0%,var(--ink) 55%,var(--blue-deep) 100%);overflow:hidden;padding:88px 0 76px;text-align:center;}
+  .page-hero::before{content:"";position:absolute;inset:0;background-image:url('assets/images/Imaculate.png');background-size:cover;background-position:center;background-repeat:no-repeat;filter:brightness(.15) saturate(.2);opacity:.5;z-index:0;pointer-events:none;}
+  .page-hero .wrap{position:relative;z-index:1;}
+  .page-hero .plaque{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(147,197,253,.45);padding:7px 14px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px;}
+  .page-hero h1{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:600;line-height:1.08;}
+  .page-hero h1 em{font-style:italic;font-weight:500;}
+  .page-hero p.lede{font-size:1.05rem;line-height:1.7;max-width:62ch;margin:20px auto 0;}
+  .hero-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:640px;margin:46px auto 0;}
+  .hero-stat{background:rgba(15,23,42,.45);backdrop-filter:blur(8px);border:1px solid rgba(147,197,253,.35);padding:18px 12px;text-align:center;}
+  .hero-stat .n{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--sky-light);display:block;line-height:1.2;white-space:nowrap;}
+  .hero-stat .l{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);display:block;margin-top:8px;}
+
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;margin-top:10px;}
+  .section-head p{margin-top:14px;line-height:1.7;font-size:1.02rem;}
+  .section-head .hint{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);}
+
+  /* ============ FACILITY CARDS ============ */
+  .facilities{background:var(--parchment);}
+  .fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .fac-card{
+    display:flex;flex-direction:column;text-align:left;
+    background:var(--white);border:1px solid var(--rule);border-radius:3px;
+    padding:14px;cursor:pointer;font-family:'Poppins',sans-serif;
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .fac-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--sky);}
+  .fac-icon{
+    position:relative;aspect-ratio:16/10;border-radius:3px;overflow:hidden;margin-bottom:12px;
+    background:linear-gradient(160deg,var(--parchment-deep),var(--soft-slate));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .fac-icon svg{width:46px;height:46px;color:var(--ink);}
+  .fac-card .tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:6px;font-weight:600;}
+  .fac-card h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin:0 0 6px;letter-spacing:-0.01em;}
+  .fac-card p{font-size:.8rem;line-height:1.55;color:var(--ink-soft);margin:0 0 14px;flex:1;}
+  .fac-more{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.78rem;color:var(--ink);border-top:1px solid var(--rule);padding-top:12px;}
+  .fac-more svg{width:14px;height:14px;transition:transform .2s ease;}
+  .fac-card:hover .fac-more svg{transform:translateX(4px);}
+
+  /* ============ FACILITY MODAL ============ */
+  .fac-lightbox{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .fac-lightbox[hidden]{display:none;}
+  .fac-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.86);backdrop-filter:blur(4px);}
+  .fac-frame{
+    position:relative;background:var(--white);border:1px solid var(--rule);border-radius:4px;
+    box-shadow:0 32px 64px -24px rgba(2,6,23,.6);
+    max-width:min(860px,94vw);width:100%;max-height:88vh;overflow:hidden;
+    animation:facIn .3s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes facIn{from{opacity:0;transform:translateY(12px) scale(.97);}to{opacity:1;transform:none;}}
+  .fac-layout{display:grid;grid-template-columns:240px 1fr;overflow:hidden;max-height:88vh;}
+  .fac-side{
+    background:linear-gradient(160deg,var(--ink-2),var(--blue-deep));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    padding:32px 20px;text-align:center;
+  }
+  .fac-side-icon{width:88px;height:88px;border-radius:50%;border:1.5px solid var(--sky-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fac-side-icon svg{width:40px;height:40px;color:var(--sky-light);}
+  .fac-side-tag{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--soft-slate);}
+  .fac-main{padding:36px 38px;overflow-y:auto;}
+  .fac-main h3{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:600;color:var(--ink);margin:8px 0 14px;}
+  .fac-main > p{font-size:.95rem;line-height:1.75;color:var(--ink-soft);margin:0 0 24px;}
+  .fac-feat-head{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;font-weight:600;}
+  .fac-features{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;}
+  .fac-features li{position:relative;padding-left:18px;font-size:.85rem;line-height:1.5;color:var(--ink-soft);}
+  .fac-features li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--sky);}
+  .fac-close{
+    position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;
+    background:var(--ink);color:var(--white);border:none;cursor:pointer;font-size:.95rem;
+    box-shadow:var(--shadow);transition:background .2s ease,transform .2s ease;
+    z-index:3;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;
+  }
+  .fac-close:hover{background:var(--blue);transform:scale(1.05);}
+
+  .cta-band{background:linear-gradient(120deg,var(--blue-deep),var(--blue));text-align:center;padding:88px 0;}
+  .cta-band h2{font-size:clamp(1.9rem,3.6vw,2.9rem);}
+  .cta-band p{max-width:52ch;margin:16px auto 32px;line-height:1.6;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .cta-band .hero-ctas{justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;text-decoration:none;font-weight:600;font-size:.9rem;border-radius:2px;font-family:'Poppins',sans-serif;transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}
+  .btn-primary{background:var(--sky);}
+  .btn-primary:hover{background:var(--sky-light);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(224,242,254,.35);}
+  .btn-ghost:hover{border-color:var(--sky-light);}
+  .cta-band .btn-ghost{border-color:rgba(240,249,255,.4);}
+
+  footer{background:var(--ink);padding:72px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:56px;}
+  .footer-brand{display:flex;gap:14px;align-items:flex-start;}
+  .footer-brand img{width:56px;height:56px;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);}
+  .footer-brand p{font-size:.86rem;line-height:1.6;margin-top:10px;max-width:32ch;}
+  footer h5{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{text-decoration:none;font-size:.88rem;} footer a:hover{color:var(--sky-light);}
+  .footer-bottom{border-top:1px solid rgba(148,163,184,.18);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+
+  @media (max-width:1100px){
+    .nav-links{gap:16px;}
+    .nav-links > li > a{font-size:.84rem;}
+    .brand-text .name{font-size:clamp(.75rem,1.6vw,.95rem);}
+    .brand-text .sub{font-size:.52rem;}
+    .sub-menu .grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:992px){
+    nav.main{gap:12px;}
+    .nav-links{position:fixed;inset:0 0 0 auto;top:0;height:100vh;width:78%;background:var(--parchment);flex-direction:column;align-items:flex-start;padding:100px 28px 28px;gap:22px;transform:translateX(100%);transition:transform .3s ease;box-shadow:-10px 0 30px rgba(0,0,0,.15);}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links > li > a{font-size:.95rem;}
+    .hamburger{display:block;}
+    .nav-links > li.has-sub::after{display:none;}
+    .sub-menu{position:static;transform:none;opacity:1;pointer-events:auto;background:transparent;border:none;box-shadow:none;padding:6px 0 0 14px;margin-left:6px;border-left:1px solid var(--rule);}
+    .sub-menu .menu-head{display:none;}
+    .sub-menu .grid{grid-template-columns:1fr;gap:6px;}
+    .sub-menu .grid a{opacity:1;transform:none;border:none;background:transparent;padding:8px 10px;box-shadow:none;}
+    .sub-menu .grid a .t{font-size:.9rem;}
+    .sub-menu .grid a .t::before{display:none;}
+    .sub-menu .grid a:hover .t{padding-left:0;}
+    .sub-menu .grid a .d{font-size:.78rem;}
+  }
+  @media (max-width:960px){
+    .fac-grid{grid-template-columns:1fr 1fr;}
+    .hero-stats-row{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:820px){
+    .fac-layout{grid-template-columns:1fr;}
+    .fac-side{flex-direction:row;padding:18px 20px;gap:16px;justify-content:flex-start;text-align:left;}
+    .fac-side-icon{width:56px;height:56px;}
+    .fac-side-icon svg{width:26px;height:26px;}
+    .fac-main{padding:26px 24px;}
+    .fac-features{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .fac-grid{grid-template-columns:1fr;}
+    .hero-stats-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 20px;}
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="utility-left">
+      <span class="c-white">Plaza Mabini St., Balayan, Batangas 4213</span>
+      <a href="tel:0437276760" class="c-white">(043) 727-6760</a>
+    </div>
+    <div class="utility-right">
+      <a href="https://www.facebook.com/ICCBalayanIncOfficial" class="c-white">Facebook</a>
+      <a href="https://www.youtube.com/@immaculateconceptioncolleg7709" class="c-white">YouTube</a>
+      <a href="mailto:mail@iccbalayan.edu.ph" class="c-white">mail@iccbalayan.edu.ph</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <nav class="main wrap">
+    <a href="index.html" class="brand">
+      <!-- <img src="assets/images/logo.png" alt="ICCBI Logo"> -->
+      <span class="brand-text">
+        <span class="name c-ink">Immaculate Conception College of Balayan</span>
+        <span class="sub c-blue">Augustinian Recollect Sisters</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="c-ink">Home</a></li>
+      <li class="has-sub">
+        <a href="index.html#about" class="c-ink">About</a>
+        <div class="sub-menu">
+          <div class="wrap">
+            <div class="menu-head">
+              <span class="eyebrow c-blue">About ICCBI</span>
+              <span class="note">Ninety years of Catholic formation in Balayan.</span>
+            </div>
+            <div class="grid">
+              <a href="chronicles.html"><span class="t">Our Chronicle</span><span class="d">The full 90-year history of ICCBI — from the old convent to the modern campus.</span></a>
+              <a href="school-seal.html"><span class="t">School Seal</span><span class="d">The meaning behind the shield, the cross, the rosary, and the motto of the college.</span></a>
+              <a href="mission-vision.html"><span class="t">Mission & Vision</span><span class="d">The purpose and the four commitments that guide every ICCnian formation.</span></a>
+              <a href="core-values.html"><span class="t">Core Values</span><span class="d">Integrity, Collaboration, Compassion, Benevolence, Innovation — the ICCnian standard.</span></a>
+              <a href="school-hymn.html"><span class="t">School Hymn</span><span class="d">"Hail the ICCnians singing" — the song behind every assembly and graduation.</span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="academics.html" class="c-ink">Academics</a></li>
+      <li><a href="campus.html" class="c-ink active-page">Campus</a></li>
+      <li><a href="https://iccbalayan.edu.ph/contact/" class="c-ink">Contact</a></li>
+      <li><a class="apply c-white" href="https://iccbalayan.edu.ph/registration-forms/">Apply Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="plaque c-sky-light hero-enter">✦ Plaza Mabini St., Balayan, Batangas</div>
+    <h1 class="c-frost hero-enter hero-enter-delay-1">A campus built <em class="c-sky-light">for formation.</em></h1>
+    <p class="lede c-slate hero-enter hero-enter-delay-2">Every space at ICCBI — from the chapel to the laboratories, the library to the grounds — is designed to form the whole ICCnian: mind, character, and heart.</p>
+    <div class="hero-stats-row hero-enter hero-enter-delay-3">
+      <div class="hero-stat"><span class="n">9 Facilities</span><span class="l">Campus Spaces</span></div>
+      <div class="hero-stat"><span class="n">4 Levels</span><span class="l">One Campus</span></div>
+      <div class="hero-stat"><span class="n">Since 1935</span><span class="l">In Balayan</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="facilities">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow c-blue" data-reveal="fade-up">Campus & Formation</span>
+      <h2 class="c-ink" data-reveal="fade-up">Where the day-to-day happens.</h2>
+      <p class="c-ink-soft" data-reveal="fade-up">Nine spaces carry the daily life of an ICCnian — prayer, study, training, play, and care.</p>
+      <span class="hint" data-reveal="fade-up">✦ Tap any card to step inside the facility</span>
+    </div>
+
+    <div class="fac-grid" data-reveal-stagger>
+
+      <button class="fac-card" data-fac="chapel" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.2v2.3M10.8 3.3h2.4"/><path d="M4.5 21.5V11.8c0-.9.4-1.7 1.1-2.2L12 5l6.4 4.6c.7.5 1.1 1.3 1.1 2.2v9.7"/><path d="M4.5 21.5h15"/><path d="M9.8 21.5v-5.2c0-1.2 1-2.1 2.2-2.1s2.2.9 2.2 2.1v5.2"/><path d="M8 13.6h1.6M14.4 13.6H16"/></svg></div>
+        <span class="tag">Formation</span>
+        <h4>Chapel & Chaplaincy</h4>
+        <p>The spiritual center of campus life — daily prayer, Mass, and sacramental formation.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="library" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.2c2.1-.9 4.6-.9 6.8 0v14c-2.2-.9-4.7-.9-6.8 0Z"/><path d="M20.5 5.2c-2.1-.9-4.6-.9-6.8 0v14c2.2-.9 4.7-.9 6.8 0Z"/><path d="M10.3 5.2v14M13.7 5.2v14"/></svg></div>
+        <span class="tag">Academics</span>
+        <h4>Library</h4>
+        <p>A quiet research and reading space with a growing collection for every level.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="science" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5h4M10.6 2.5v5.3L6.3 16.4c-.7 1.5.4 3.1 2 3.1h7.4c1.6 0 2.7-1.6 2-3.1l-4.3-8.6V2.5"/><path d="M8.6 13.5h6.8"/><circle cx="12" cy="16.7" r="0.55" fill="currentColor" stroke="none"/></svg></div>
+        <span class="tag">Academics</span>
+        <h4>Science Laboratories</h4>
+        <p>Hands-on lab rooms where STEM and science learners bring theory to life.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="computer" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M9 20.5h6M12 16.5v4"/><path d="M6.5 8h6M6.5 11h4"/></svg></div>
+        <span class="tag">Academics</span>
+        <h4>Computer Laboratories</h4>
+        <p>Networked computer rooms powering ICT, CSS, and college computing programs.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="gym" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 4.5H4.8c0 2.6 1.3 4.2 3.2 4.5M16 4.5h3.2c0 2.6-1.3 4.2-3.2 4.5"/><path d="M12 13v3.5M8.5 20.5h7M9.5 20.5c0-2 1-3 2.5-3s2.5 1 2.5 3"/></svg></div>
+        <span class="tag">Student Life</span>
+        <h4>Gymnasium & Grounds</h4>
+        <p>The home of ICCnian athletics — covered court, open grounds, and school spirit.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="auditorium" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9.2" y="2.8" width="5.6" height="10" rx="2.8"/><path d="M5.5 10.5a6.5 6.5 0 0 0 13 0"/><path d="M12 17v3.5M9 20.5h6"/></svg></div>
+        <span class="tag">Student Life</span>
+        <h4>Auditorium & Cultural Center</h4>
+        <p>The stage for graduations, concerts, theater, and community celebrations.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="canteen" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5.5a2 2 0 0 0 4 0V3"/><path d="M8 3v18"/><path d="M16.5 3v18"/><path d="M16.5 3c-1.8 2.3-2.7 4.8-2.7 7.2 0 1.8 1.1 3 2.7 3"/></svg></div>
+        <span class="tag">Student Life</span>
+        <h4>Canteen & Food Services</h4>
+        <p>Clean, welcoming dining space serving affordable, nutritious meals all day.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="guidance" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11h-9l-4.5 4v-4H4Z"/><path d="M12 8.1c.9-1.3 3-1 3 .7 0 1.3-1.7 2.4-3 3.3-1.3-.9-3-2-3-3.3 0-1.7 2.1-2 3-.7Z"/></svg></div>
+        <span class="tag">Support Services</span>
+        <h4>Guidance & Counseling</h4>
+        <p>A safe, confidential space for academic, personal, and career guidance.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="fac-card" data-fac="clinic" data-reveal="fade-up">
+        <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="13.5" rx="2"/><path d="M12 10v6.5M8.8 13.2h6.4"/><path d="M9.5 6.5v-2h5v2"/></svg></div>
+        <span class="tag">Support Services</span>
+        <h4>Health Services Clinic</h4>
+        <p>First aid, health monitoring, and wellness care for the whole community.</p>
+        <span class="fac-more">View Facility <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <span class="eyebrow c-sky-light" data-reveal="fade-up">Admissions Open</span>
+    <h2 style="margin-top:10px;" class="c-frost" data-reveal="fade-up">See the campus in person.</h2>
+    <p class="c-soft-slate" data-reveal="fade-up">Photos only say so much — visit us on Plaza Mabini St. and walk the halls, the chapel, and the grounds yourself.</p>
+    <div class="hero-ctas" data-reveal="fade-up">
+      <a class="btn btn-primary c-ink" href="https://iccbalayan.edu.ph/registration-forms/">Apply for Admission</a>
+      <a class="btn btn-ghost c-frost" href="https://iccbalayan.edu.ph/contact/">Visit the Campus</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand" data-reveal="fade-up">
+        <!-- <img src="assets/images/logo.png" alt="ICCBI Logo"> -->
+        <div>
+          <span class="name c-frost" style="font-family:'Fraunces',serif;font-weight:600;">Immaculate Conception College of Balayan, Inc.</span>
+          <p class="c-muted">Plaza Mabini St., Balayan, Batangas 4213, Philippines</p>
+        </div>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">About</h5>
+        <ul>
+          <li><a href="chronicles.html" class="c-muted">History of ICC</a></li>
+          <li><a href="mission-vision.html" class="c-muted">Mission & Vision</a></li>
+          <li><a href="core-values.html" class="c-muted">Core Values</a></li>
+          <li><a href="school-hymn.html" class="c-muted">School Hymn</a></li>
+          <li><a href="academics.html" class="c-muted">Academics</a></li>
+          <li><a href="https://iccbalayan.edu.ph/accreditations/" class="c-muted">Accreditations</a></li>
+        </ul>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">Inside ICCBI</h5>
+        <ul>
+          <li><a href="https://iccbalayan.edu.ph/board-of-trustees/" class="c-muted">Board of Trustees</a></li>
+          <li><a href="https://iccbalayan.edu.ph/administrative-board/" class="c-muted">Administrative Board</a></li>
+          <li><a href="https://iccbalayan.edu.ph/directory/" class="c-muted">Directory</a></li>
+        </ul>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">Contact</h5>
+        <ul>
+          <li class="c-muted">Directress' Office: (043) 727-6760</li>
+          <li class="c-muted">Telefax: (043) 407-1034</li>
+          <li><a href="mailto:mail@iccbalayan.edu.ph" class="c-muted">mail@iccbalayan.edu.ph</a></li>
+          <li><a href="https://iccbalayan.edu.ph/alumni-directory/" class="c-muted">Alumni Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="c-dark-muted">© 2026 Immaculate Conception College of Balayan, Inc. · Redesign Concept</span>
+      <span class="c-dark-muted">Design direction: The Chronicle — Blue & White</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FACILITY MODAL ============ -->
+<div class="fac-lightbox" id="facLightbox" role="dialog" aria-modal="true" aria-label="Campus facility" hidden>
+  <div class="fac-backdrop" data-close></div>
+  <div class="fac-frame">
+    <button class="fac-close" data-close aria-label="Close facility">✕</button>
+    <div class="fac-layout">
+      <div class="fac-side">
+        <div class="fac-side-icon" id="facIcon"></div>
+        <span class="fac-side-tag" id="facTag"></span>
+      </div>
+      <div class="fac-main">
+        <span class="eyebrow c-blue">Campus Facility</span>
+        <h3 id="facName"></h3>
+        <p id="facDesc"></p>
+        <h5 class="fac-feat-head">Inside this facility</h5>
+        <ul class="fac-features" id="facFeatures"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const siteHeader = document.querySelector('header.site');
+  function setHeaderBottom(){
+    const r = siteHeader.getBoundingClientRect();
+    document.documentElement.style.setProperty('--header-h', Math.max(r.bottom, 0) + 'px');
+  }
+  setHeaderBottom();
+  window.addEventListener('resize', setHeaderBottom);
+  window.addEventListener('scroll', setHeaderBottom, {passive:true});
+
+  /* ============ FACILITY DATA ============ */
+  const FACILITIES = {
+    chapel: {
+      tag: 'Formation',
+      name: 'Chapel & Chaplaincy',
+      desc: 'The spiritual heart of ICCBI, where the whole school community gathers for daily prayer, Mass, and sacramental life under the care of the Augustinian Recollect Sisters. The chapel anchors the school\u2019s mission of forming Christ-centered ICCnians.',
+      features: [
+        'Daily Mass, prayer services, and Marian devotions',
+        'Retreats and recollections for every grade level',
+        'Sacramental preparation and spiritual counseling',
+        'Home of the school chaplaincy and ministry programs'
+      ]
+    },
+    library: {
+      tag: 'Academics',
+      name: 'Library & Learning Resource Center',
+      desc: 'A quiet, dedicated space for reading, research, and study, supporting learners from Elementary to College. The collection grows each year with new titles, references, and digital resources aligned with the curriculum.',
+      features: [
+        'Circulation and reference collections for all levels',
+        'Filipiniana and ICCBI archives section',
+        'Reading carrels and group study areas',
+        'Digital catalog and e-resource stations'
+      ]
+    },
+    science: {
+      tag: 'Academics',
+      name: 'Science Laboratories',
+      desc: 'Hands-on laboratory rooms where STEM and science students bring theory to life through experiments and investigation — fully equipped for the science subjects of Junior and Senior High School.',
+      features: [
+        'Physics, chemistry, and biology work areas',
+        'Bench stations with safety equipment',
+        'Specimen, model, and instrument cabinets',
+        'Support for research and science fair projects'
+      ]
+    },
+    computer: {
+      tag: 'Academics',
+      name: 'Computer Laboratories',
+      desc: 'Modern computer rooms that power the school\u2019s technology education — from basic computer literacy to Computer Systems Servicing and the college computing programs.',
+      features: [
+        'Networked student workstations with internet access',
+        'TESDA-aligned setup for Computer Systems Servicing',
+        'Programming and multimedia software suites',
+        'Printing and online examination support'
+      ]
+    },
+    gym: {
+      tag: 'Student Life',
+      name: 'Gymnasium & Sports Grounds',
+      desc: 'The home of ICCnian athletics — a covered court and open grounds where students train, compete, and celebrate school spirit during intramurals, P.E. classes, and league games.',
+      features: [
+        'Covered court for basketball, volleyball, and badminton',
+        'Open grounds for track, football, and field events',
+        'Venue for intramurals, P.E., and school assemblies',
+        'Training space for the school varsity teams'
+      ]
+    },
+    auditorium: {
+      tag: 'Student Life',
+      name: 'Auditorium & Cultural Center',
+      desc: 'The stage for ICCBI\u2019s vibrant cultural life — graduations, concerts, theater, and community celebrations all happen here, forming confident and creative ICCnians.',
+      features: [
+        'Stage and sound system for major school events',
+        'Graduation and recognition ceremonies',
+        'Music, dance, and theater rehearsals',
+        'Home of the school cultural organizations'
+      ]
+    },
+    canteen: {
+      tag: 'Student Life',
+      name: 'Canteen & Food Services',
+      desc: 'A clean, welcoming dining space serving affordable and nutritious meals to students, faculty, and staff throughout the school day — and a training ground for the Home Economics strand.',
+      features: [
+        'Daily hot meals and healthy snack options',
+        'Hygiene-rated food preparation areas',
+        'Seating for student organizations and meetings',
+        'Practicum space for the SHS Home Economics strand'
+      ]
+    },
+    guidance: {
+      tag: 'Support Services',
+      name: 'Guidance & Counseling Office',
+      desc: 'A safe, confidential space where trained counselors accompany students in their academic, personal, and career journeys — from choosing a Senior High track to preparing for college.',
+      features: [
+        'Individual and group counseling sessions',
+        'Career guidance and SHS track advisory',
+        'Psychological and aptitude testing',
+        'Peer counseling and formation programs'
+      ]
+    },
+    clinic: {
+      tag: 'Support Services',
+      name: 'Health Services Clinic',
+      desc: 'The school clinic looks after the health and well-being of the whole ICCBI community, providing first aid, health monitoring, and referrals in coordination with parents and local health workers.',
+      features: [
+        'First aid and emergency care on campus',
+        'Health records and annual medical checkups',
+        'Health education and wellness programs',
+        'Coordination with parents and local health centers'
+      ]
+    }
+  };
+
+  /* ============ FACILITY MODAL LOGIC ============ */
+  const facLightbox = document.getElementById('facLightbox');
+  const facIcon = document.getElementById('facIcon');
+  const facTag = document.getElementById('facTag');
+  const facName = document.getElementById('facName');
+  const facDesc = document.getElementById('facDesc');
+  const facFeatures = document.getElementById('facFeatures');
+  let facLastFocus = null;
+
+  function openFac(card){
+    const f = FACILITIES[card.dataset.fac];
+    if(!f) return;
+    facLastFocus = document.activeElement;
+    facIcon.innerHTML = card.querySelector('.fac-icon svg').outerHTML;
+    facTag.textContent = f.tag;
+    facName.textContent = f.name;
+    facDesc.textContent = f.desc;
+    facFeatures.innerHTML = f.features.map(x => `<li>${x}</li>`).join('');
+    facLightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    facLightbox.querySelector('.fac-close').focus();
+  }
+  function closeFac(){
+    facLightbox.hidden = true;
+    document.body.style.overflow = '';
+    if(facLastFocus) facLastFocus.focus();
+  }
+  document.querySelectorAll('.fac-card').forEach(card => {
+    card.addEventListener('click', () => openFac(card));
+  });
+  facLightbox.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeFac));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && !facLightbox.hidden) closeFac();
+  });
+
+  /* ============ REVEAL ============ */
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('revealed');
+      else entry.target.classList.remove('revealed');
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  /* ============ NAV ============ */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
