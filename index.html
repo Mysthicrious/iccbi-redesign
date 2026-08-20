@@ -80,7 +80,10 @@
   .nav-links .apply::after{display:none;}
   .nav-links .apply:hover{background:var(--blue-deep);}
   .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
-  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .3s ease,opacity .3s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   .nav-links > li.has-sub::after{content:"";position:absolute;top:100%;left:-14px;right:-14px;height:18px;}
   .sub-menu{
@@ -370,6 +373,20 @@
   .guide-list p{margin:0;font-size:.85rem;line-height:1.55;}
   .guide-panel .btn-primary{width:100%;justify-content:center;margin-top:18px;padding:11px 20px;font-size:.82rem;}
 
+  /* Mobile submenu toggle */
+  .mobile-submenu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    margin-left:6px;
+    font-size:.7rem;
+    color:var(--ink);
+    transition:transform .3s ease;
+  }
+  .mobile-submenu-toggle.open{transform:rotate(180deg);}
+
   @media (max-width:1100px){
     .nav-links{gap:16px;}
     .nav-links > li > a{font-size:.84rem;}
@@ -379,24 +396,92 @@
   }
   @media (max-width:992px){
     nav.main{gap:12px;}
-    .nav-links{position:fixed;inset:0 0 0 auto;top:0;height:100vh;width:78%;background:var(--parchment);flex-direction:column;align-items:flex-start;padding:100px 28px 28px;gap:22px;transform:translateX(100%);transition:transform .3s ease;box-shadow:-10px 0 30px rgba(0,0,0,.15);}
+    .nav-links{
+      position:fixed;
+      inset:0 0 0 auto;
+      top:0;
+      height:100vh;
+      width:78%;
+      max-width:360px;
+      background:var(--parchment);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:100px 28px 28px;
+      gap:0;
+      transform:translateX(100%);
+      transition:transform .3s cubic-bezier(.22,1,.36,1);
+      box-shadow:-10px 0 30px rgba(0,0,0,.15);
+      overflow-y:auto;
+    }
     .nav-links.open{transform:translateX(0);}
-    .nav-links > li > a{font-size:.95rem;}
-    .hamburger{display:block;}
+    .nav-links > li{
+      width:100%;
+      border-bottom:1px solid var(--rule);
+      padding:16px 0;
+    }
+    .nav-links > li:last-child{border-bottom:none;}
+    .nav-links > li > a{
+      font-size:1.05rem;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      width:100%;
+    }
+    .nav-links > li > a::after{display:none;}
+    .hamburger{display:block;z-index:100;}
     .nav-links > li.has-sub::after{display:none;}
+    
+    .mobile-submenu-toggle{display:inline-flex;}
+    
     .sub-menu{
-      position:static;transform:none;opacity:1;pointer-events:auto;
-      background:transparent;border:none;box-shadow:none;
-      padding:6px 0 0 14px;margin-left:6px;
-      border-left:1px solid var(--rule);
+      position:static;
+      transform:none;
+      opacity:0;
+      pointer-events:none;
+      max-height:0;
+      overflow:hidden;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      padding:0;
+      margin:0;
+      transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .3s ease;
+    }
+    .sub-menu.open{
+      opacity:1;
+      pointer-events:auto;
+      max-height:600px;
+      padding:12px 0 4px 0;
     }
     .sub-menu .menu-head{display:none;}
-    .sub-menu .grid{grid-template-columns:1fr;gap:6px;}
-    .sub-menu .grid a{opacity:1;transform:none;border:none;background:transparent;padding:8px 10px;box-shadow:none;}
-    .sub-menu .grid a .t{font-size:.9rem;}
+    .sub-menu .grid{
+      grid-template-columns:1fr;
+      gap:8px;
+      padding:0;
+    }
+    .sub-menu .grid a{
+      opacity:1;
+      transform:none;
+      border:none;
+      background:var(--white);
+      padding:14px 16px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
+      border-radius:4px;
+    }
+    .sub-menu .grid a .t{
+      font-size:.95rem;
+      margin-bottom:4px;
+    }
     .sub-menu .grid a .t::before{display:none;}
+    .sub-menu .grid a:hover{
+      background:var(--parchment-deep);
+      box-shadow:0 4px 12px rgba(0,0,0,.1);
+    }
     .sub-menu .grid a:hover .t{padding-left:0;}
-    .sub-menu .grid a .d{font-size:.78rem;}
+    .sub-menu .grid a .d{
+      font-size:.78rem;
+      line-height:1.5;
+    }
   }
   @media (max-width:960px){
     .num-grid{grid-template-columns:repeat(2,1fr);}
@@ -466,8 +551,11 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="c-ink active-page">Home</a></li>
       <li class="has-sub">
-        <a href="#about" class="c-ink">About</a>
-        <div class="sub-menu">
+        <a href="#about" class="c-ink" id="aboutLink">
+          About
+          <button class="mobile-submenu-toggle" id="mobileSubmenuToggle" aria-label="Toggle submenu">▼</button>
+        </a>
+        <div class="sub-menu" id="subMenu">
           <div class="wrap">
             <div class="menu-head">
               <span class="eyebrow c-blue">About ICCBI</span>
@@ -883,7 +971,7 @@
   </div>
   <ul class="guide-list">
     <li><span class="gnum c-blue">1</span><p class="c-ink-soft">Use the top menu to jump straight to Academics or Campus.</p></li>
-    <li><span class="gnum c-blue">2</span><p class="c-ink-soft">Hover over "About" to open the wide panel with Our Chronicle, School Seal, Mission & Vision, and Core Values.</p></li>
+    <li><span class="gnum c-blue">2</span><p class="c-ink-soft">On mobile, tap "About" to expand the submenu with Our Chronicle, School Seal, Mission & Vision, and Core Values.</p></li>
     <li><span class="gnum c-blue">3</span><p class="c-ink-soft">In Accreditations, click any logo card to view the full certificate.</p></li>
     <li><span class="gnum c-blue">4</span><p class="c-ink-soft">Ready to enroll? Tap Apply for Admission anytime — it's always one click away.</p></li>
   </ul>
@@ -1058,16 +1146,97 @@
     });
   }
 
+  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
+  
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
+    
+    // Prevent body scroll when menu is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }));
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && 
+        !navLinks.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Mobile submenu toggle
+  const mobileSubmenuToggle = document.getElementById('mobileSubmenuToggle');
+  const subMenu = document.getElementById('subMenu');
+  const aboutLink = document.getElementById('aboutLink');
+  
+  mobileSubmenuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = subMenu.classList.toggle('open');
+    mobileSubmenuToggle.classList.toggle('open');
+    mobileSubmenuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Prevent about link default behavior on mobile
+  aboutLink.addEventListener('click', (e) => {
+    if (window.innerWidth <= 992) {
+      e.preventDefault();
+      mobileSubmenuToggle.click();
+    }
+  });
+
+  // Close menu when clicking any nav link (except submenu toggle)
+  navLinks.querySelectorAll('a:not(.mobile-submenu-toggle)').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        
+        // Close submenu if open
+        if (subMenu.classList.contains('open')) {
+          subMenu.classList.remove('open');
+          mobileSubmenuToggle.classList.remove('open');
+        }
+      }
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger.focus();
+    }
+  });
+
+  // Reset menu state on resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 992) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      subMenu.classList.remove('open');
+      mobileSubmenuToggle.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
 
   const guideToggle = document.getElementById('guideToggle');
   const guidePanel = document.getElementById('guidePanel');
