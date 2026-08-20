@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Values — Immaculate Conception College of Balayan, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&family=UnifrakturCook:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#274fab; --ink-2:#1E293B; --ink-soft:#131313;
+    --parchment:#EFF6FF; --parchment-deep:#DBEAFE; --paper:#F8FAFC;
+    --blue:#1d93d8; --blue-deep:#1E3A8A;
+    --sky:#60A5FA; --sky-light:#93C5FD; --teal:#006f8a;
+    --rule: rgba(15,23,42,0.14);
+    --shadow: 0 18px 40px -20px rgba(15,23,42,0.35);
+    --white:#FFFFFF; --frost:#F0F9FF; --light-slate:#E2E8F0;
+    --slate:#CBD5E1; --muted:#94A3B8; --dark-muted:#64748B; --soft-slate:#BFDBFE;
+  }
+  .c-ink{color:var(--ink);}.c-ink-2{color:var(--ink-2);}.c-ink-soft{color:var(--ink-soft);}
+  .c-blue{color:var(--blue);}.c-blue-deep{color:var(--blue-deep);}
+  .c-sky{color:var(--sky);}.c-sky-light{color:var(--sky-light);}
+  .c-teal{color:var(--teal);}.c-white{color:var(--white);}.c-frost{color:var(--frost);}
+  .c-light-slate{color:var(--light-slate);}.c-slate{color:var(--slate);}
+  .c-muted{color:var(--muted);}.c-dark-muted{color:var(--dark-muted);}
+  .c-soft-slate{color:var(--soft-slate);}.c-parchment{color:var(--parchment);}
+
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--parchment);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
+
+  [data-reveal]{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;}
+  [data-reveal="fade-up"]{transform:translateY(40px);}
+  [data-reveal="fade-up"].revealed{opacity:1;transform:translateY(0);}
+  [data-reveal="slide-left"]{transform:translateX(-60px);}
+  [data-reveal="slide-left"].revealed{opacity:1;transform:translateX(0);}
+  [data-reveal="slide-right"]{transform:translateX(60px);}
+  [data-reveal="slide-right"].revealed{opacity:1;transform:translateX(0);}
+
+  .hero-enter{opacity:0;transform:translateY(30px);animation:heroEnter 1s cubic-bezier(.22,1,.36,1) forwards;}
+  .hero-enter-delay-1{animation-delay:.2s;} .hero-enter-delay-2{animation-delay:.4s;} .hero-enter-delay-3{animation-delay:.6s;}
+  @keyframes heroEnter{to{opacity:1;transform:translateY(0);}}
+
+  .utility-bar{background:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+  .utility-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;flex-wrap:wrap;gap:8px;}
+  .utility-bar a{text-decoration:none;opacity:.85;} .utility-bar a:hover{opacity:1;}
+  .utility-left{display:flex;gap:20px;flex-wrap:wrap;}
+  .utility-right{display:flex;gap:16px;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(239,246,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);}
+  nav.main{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 32px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+  .brand svg{width:40px;height:40px;flex-shrink:0;}
+  .brand-text{line-height:1.1;display:flex;flex-direction:column;justify-content:center;}
+  .brand-text .name{font-family:'UnifrakturCook','Fraunces',serif;font-size:clamp(.78rem,1.7vw,1.05rem);font-weight:700;display:block;white-space:nowrap;letter-spacing:0;}
+  .brand-text .sub{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:3px;}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0;}
+  .nav-links > li{position:relative;}
+  .nav-links > li > a{text-decoration:none;font-size:.88rem;font-weight:500;padding:8px 0;position:relative;white-space:nowrap;}
+  .nav-links > li > a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--sky);transition:right .25s ease;}
+  .nav-links > li:hover > a::after{right:0;}
+  .nav-links > li > a.active-page::after{right:0;background:var(--blue);}
+  .nav-links .apply{background:var(--blue);padding:10px 18px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;white-space:nowrap;}
+  .nav-links .apply::after{display:none;}
+  .nav-links .apply:hover{background:var(--blue-deep);}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
+
+  .nav-links > li.has-sub::after{content:"";position:absolute;top:100%;left:-14px;right:-14px;height:18px;}
+  .sub-menu{
+    position:fixed;left:0;right:0;top:var(--header-h,64px);
+    background:var(--paper);border-bottom:1px solid var(--rule);
+    box-shadow:0 30px 50px -30px rgba(15,23,42,.35);
+    padding:34px 0 40px;opacity:0;pointer-events:none;transform:translateY(-10px);
+    transition:opacity .28s ease,transform .28s ease;z-index:49;
+  }
+  .has-sub:hover .sub-menu,.has-sub:focus-within .sub-menu{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .sub-menu .menu-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;}
+  .sub-menu .menu-head .note{font-size:.8rem;color:var(--muted);}
+  .sub-menu .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .sub-menu .grid a{
+    display:block;padding:20px 22px;border-radius:3px;border:1px solid var(--rule);background:var(--white);
+    text-decoration:none;opacity:0;transform:translateY(-8px);
+    transition:opacity .3s ease,transform .3s ease,border-color .2s ease,box-shadow .2s ease;
+  }
+  .sub-menu .grid a .t{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:.98rem;color:var(--ink);margin-bottom:6px;position:relative;padding-left:0;}
+  .sub-menu .grid a .t::before{content:"";position:absolute;left:0;top:50%;width:0;height:2px;background:var(--sky);transition:width .25s ease;}
+  .sub-menu .grid a .d{display:block;font-family:'Poppins',sans-serif;font-size:.82rem;line-height:1.55;color:var(--ink-soft);}
+  .sub-menu .grid a:hover{border-color:var(--sky);box-shadow:var(--shadow);}
+  .sub-menu .grid a:hover .t{padding-left:26px;}
+  .sub-menu .grid a:hover .t::before{width:16px;}
+  .sub-menu .grid a.active-sub{border-color:var(--blue);}
+  .sub-menu .grid a.active-sub .t{color:var(--blue);}
+  .has-sub:hover .sub-menu .grid a,.has-sub:focus-within .sub-menu .grid a{opacity:1;transform:translateY(0);}
+  .has-sub:hover .sub-menu .grid a:nth-child(1),.has-sub:focus-within .sub-menu .grid a:nth-child(1){transition-delay:.06s,.06s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(2),.has-sub:focus-within .sub-menu .grid a:nth-child(2){transition-delay:.12s,.12s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(3),.has-sub:focus-within .sub-menu .grid a:nth-child(3){transition-delay:.18s,.18s,0s,0s;}
+  .has-sub:hover .sub-menu .grid a:nth-child(4),.has-sub:focus-within .sub-menu .grid a:nth-child(4){transition-delay:.24s,.24s,0s,0s;}
+
+  .page-hero{position:relative;background:radial-gradient(120% 140% at 15% 0%,var(--ink-2) 0%,var(--ink) 55%,var(--blue-deep) 100%);overflow:hidden;padding:88px 0 76px;text-align:center;}
+  .page-hero .plaque{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(147,197,253,.45);padding:7px 14px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px;}
+  .page-hero h1{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:600;line-height:1.08;}
+  .page-hero h1 em{font-style:italic;font-weight:500;}
+  .page-hero p.lede{font-size:1.05rem;line-height:1.7;max-width:62ch;margin:20px auto 0;}
+  .letter-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:46px;}
+  .letter-chip{flex:1 1 150px;max-width:200px;border:1px solid rgba(147,197,253,.35);background:rgba(15,23,42,.45);backdrop-filter:blur(8px);padding:18px 10px 15px;border-radius:3px;transition:transform .2s ease,border-color .2s ease;}
+  .letter-chip:hover{transform:translateY(-3px);border-color:var(--sky);}
+  .letter-chip .L{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:700;color:var(--sky-light);display:block;line-height:1;}
+  .letter-chip .W{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:9px;display:block;}
+
+  .values-page{background:var(--parchment);padding:40px 0 96px;}
+  .value-row{display:grid;grid-template-columns:210px 1fr;gap:48px;align-items:start;padding:60px 0;}
+  .value-row + .value-row{border-top:1px solid var(--rule);}
+  .value-medal{
+    width:164px;height:164px;border-radius:50%;margin:0 auto;
+    display:flex;align-items:center;justify-content:center;position:relative;
+    background:var(--val);box-shadow:0 18px 36px -18px rgba(15,23,42,.5);
+  }
+  .value-medal::before{content:"";position:absolute;inset:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);}
+  .value-medal::after{content:"";position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(255,255,255,.35);}
+  .value-medal .L{font-family:'Fraunces',serif;font-size:3.6rem;font-weight:700;color:#fff;}
+  .value-body .kicker{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--val);font-weight:600;display:block;margin-bottom:10px;}
+  .value-body h2{font-size:clamp(1.5rem,2.6vw,2.05rem);font-weight:600;color:var(--ink);margin-bottom:14px;}
+  .value-body p{font-size:1.02rem;line-height:1.85;color:var(--ink-soft);max-width:76ch;margin:0;}
+
+  .cta-band{background:linear-gradient(120deg,var(--blue-deep),var(--blue));text-align:center;padding:88px 0;}
+  .cta-band h2{font-size:clamp(1.9rem,3.6vw,2.9rem);}
+  .cta-band p{max-width:52ch;margin:16px auto 32px;line-height:1.6;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .cta-band .hero-ctas{justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;text-decoration:none;font-weight:600;font-size:.9rem;border-radius:2px;font-family:'Poppins',sans-serif;transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}
+  .btn-primary{background:var(--sky);}
+  .btn-primary:hover{background:var(--sky-light);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(224,242,254,.35);}
+  .btn-ghost:hover{border-color:var(--sky-light);}
+  .cta-band .btn-ghost{border-color:rgba(240,249,255,.4);}
+
+  footer{background:var(--ink);padding:72px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:56px;}
+  .footer-brand{display:flex;gap:14px;align-items:flex-start;}
+  .footer-brand svg{width:46px;flex-shrink:0;}
+  .footer-brand p{font-size:.86rem;line-height:1.6;margin-top:10px;max-width:32ch;}
+  footer h5{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{text-decoration:none;font-size:.88rem;} footer a:hover{color:var(--sky-light);}
+  .footer-bottom{border-top:1px solid rgba(148,163,184,.18);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+
+  @media (max-width:1100px){
+    .nav-links{gap:16px;}
+    .nav-links > li > a{font-size:.84rem;}
+    .brand-text .name{font-size:clamp(.75rem,1.6vw,.95rem);}
+    .brand-text .sub{font-size:.52rem;}
+    .sub-menu .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:992px){
+    nav.main{gap:12px;}
+    .nav-links{position:fixed;inset:0 0 0 auto;top:0;height:100vh;width:78%;background:var(--parchment);flex-direction:column;align-items:flex-start;padding:100px 28px 28px;gap:22px;transform:translateX(100%);transition:transform .3s ease;box-shadow:-10px 0 30px rgba(0,0,0,.15);}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links > li > a{font-size:.95rem;}
+    .hamburger{display:block;}
+    .nav-links > li.has-sub::after{display:none;}
+    .sub-menu{position:static;transform:none;opacity:1;pointer-events:auto;background:transparent;border:none;box-shadow:none;padding:6px 0 0 14px;margin-left:6px;border-left:1px solid var(--rule);}
+    .sub-menu .menu-head{display:none;}
+    .sub-menu .grid{grid-template-columns:1fr;gap:6px;}
+    .sub-menu .grid a{opacity:1;transform:none;border:none;background:transparent;padding:8px 10px;box-shadow:none;}
+    .sub-menu .grid a .t{font-size:.9rem;}
+    .sub-menu .grid a .t::before{display:none;}
+    .sub-menu .grid a:hover .t{padding-left:0;}
+    .sub-menu .grid a .d{font-size:.78rem;}
+  }
+  @media (max-width:860px){
+    .value-row{grid-template-columns:1fr;gap:26px;padding:46px 0;}
+    .value-medal{width:124px;height:124px;}
+    .value-medal .L{font-size:2.7rem;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 20px;}
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="utility-left">
+      <span class="c-white">Plaza Mabini St., Balayan, Batangas 4213</span>
+      <a href="tel:0437276760" class="c-white">(043) 727-6760</a>
+    </div>
+    <div class="utility-right">
+      <a href="https://www.facebook.com/ICCBalayanIncOfficial" class="c-white">Facebook</a>
+      <a href="https://www.youtube.com/@immaculateconceptioncolleg7709" class="c-white">YouTube</a>
+      <a href="mailto:mail@iccbalayan.edu.ph" class="c-white">mail@iccbalayan.edu.ph</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <nav class="main wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="47" stroke="#1D4ED8" stroke-width="2"/>
+        <circle cx="50" cy="50" r="40" stroke="#60A5FA" stroke-width="1"/>
+        <path d="M50 26 L50 62 M38 40 L62 40" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M50 62 C46 68 40 70 34 70 C40 74 46 76 50 82 C54 76 60 74 66 70 C60 70 54 68 50 62 Z" fill="#60A5FA"/>
+        <text x="50" y="16" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" letter-spacing="1" fill="#0F172A">ICCBI</text>
+        <text x="50" y="93" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" letter-spacing="1" fill="#0F172A">EST. 1935</text>
+      </svg>
+      <span class="brand-text">
+        <span class="name c-ink">Immaculate Conception College of Balayan</span>
+        <span class="sub c-blue">Augustinian Recollect Sisters</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="c-ink">Home</a></li>
+      <li class="has-sub">
+        <a href="index.html#about" class="c-ink">About</a>
+        <div class="sub-menu">
+          <div class="wrap">
+            <div class="menu-head">
+              <span class="eyebrow c-blue">About ICCBI</span>
+              <span class="note">Ninety years of Catholic formation in Balayan.</span>
+            </div>
+            <div class="grid">
+              <a href="chronicles.html">
+                <span class="t">Our Chronicle</span>
+                <span class="d">The full 90-year history of ICCBI — from the old convent to the modern campus.</span>
+              </a>
+              <a href="school-seal.html">
+                <span class="t">School Seal</span>
+                <span class="d">The meaning behind the shield, the cross, the rosary, and the motto of the college.</span>
+              </a>
+              <a href="mission-vision.html">
+                <span class="t">Mission & Vision</span>
+                <span class="d">The purpose and the four commitments that guide every ICCnian formation.</span>
+              </a>
+              <a href="core-values.html" class="active-sub">
+                <span class="t">Core Values</span>
+                <span class="d">Integrity, Collaboration, Compassion, Benevolence, Innovation — the ICCnian standard.</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="index.html#academics" class="c-ink">Academics</a></li>
+      <li><a href="index.html#campus" class="c-ink">Campus</a></li>
+      <li><a href="https://iccbalayan.edu.ph/contact/" class="c-ink">Contact</a></li>
+      <li><a class="apply c-white" href="https://iccbalayan.edu.ph/registration-forms/">Apply Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="plaque c-sky-light hero-enter">✦ Augustinian Recollect Sisters · Since 1935</div>
+    <h1 class="c-frost hero-enter hero-enter-delay-1">The five letters of <em class="c-sky-light">an ICCnian.</em></h1>
+    <p class="lede c-slate hero-enter hero-enter-delay-2">Integrity, Collaboration, Compassion, Benevolence, and Innovation — the virtues of St. Augustine that spell out ICCBI, and the promise every ICCnian carries beyond the gates of Balayan.</p>
+    <div class="letter-strip hero-enter hero-enter-delay-3">
+      <div class="letter-chip"><span class="L">I</span><span class="W">Integrity</span></div>
+      <div class="letter-chip"><span class="L">C</span><span class="W">Collaboration</span></div>
+      <div class="letter-chip"><span class="L">C</span><span class="W">Compassion</span></div>
+      <div class="letter-chip"><span class="L">B</span><span class="W">Benevolence</span></div>
+      <div class="letter-chip"><span class="L">I</span><span class="W">Innovation</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="values-page">
+  <div class="wrap">
+
+    <div class="value-row" style="--val:#1D4ED8;" data-reveal="fade-up">
+      <div class="value-medal"><span class="L">I</span></div>
+      <div class="value-body">
+        <span class="kicker">I · The Augustinian Standard of Truth</span>
+        <h2>Integrity</h2>
+        <p>At the heart of St. Augustine's philosophy is the idea of living a life of truth and moral righteousness. Integrity in this context means fostering honesty, transparency, and accountability in both academic and personal conduct. It encourages students and faculty to uphold high ethical standards, reflecting the commitment to truth that St. Augustine taught in his writings. This integrity is not just about academic honesty, but also about staying true to one's values, respecting others, and taking responsibility for one's actions.</p>
+      </div>
+    </div>
+
+    <div class="value-row" style="--val:#E8A33D;" data-reveal="fade-up">
+      <div class="value-medal"><span class="L">C</span></div>
+      <div class="value-body">
+        <span class="kicker">C · The Power of Community</span>
+        <h2>Collaboration</h2>
+        <p>St. Augustine believed in the power of community, often emphasizing the importance of living together harmoniously and working toward the common good. In the school, collaboration is about fostering teamwork and encouraging students, faculty, and staff to work together to achieve shared goals. It highlights the importance of mutual respect, understanding, and the sharing of knowledge and resources. Working together, we can contribute to the overall success and well-being of the school community.</p>
+      </div>
+    </div>
+
+    <div class="value-row" style="--val:#B33939;" data-reveal="fade-up">
+      <div class="value-medal"><span class="L">C</span></div>
+      <div class="value-body">
+        <span class="kicker">C · A Key Augustinian Virtue</span>
+        <h2>Compassion</h2>
+        <p>Compassion, a key virtue in the Augustinian tradition, encourages empathy and kindness toward others. St. Augustine's writings often speak about the need to show love and care for one's neighbors, recognizing the inherent dignity of every person. In the school setting, compassion is reflected in how students and teachers treat one another—with respect, understanding, and support. It calls for a nurturing environment where the emotional, social, physical, psychological, spiritual, and academic needs of every individual are met with genuine care.</p>
+      </div>
+    </div>
+
+    <div class="value-row" style="--val:#2E9E5B;" data-reveal="fade-up">
+      <div class="value-medal"><span class="L">B</span></div>
+      <div class="value-body">
+        <span class="kicker">B · Charitable Love in Action</span>
+        <h2>Benevolence</h2>
+        <p>Benevolence aligns with St. Augustine's call for charitable love—doing good for others without expecting anything in return. This value calls for students and staff to engage in acts of kindness and generosity, not only within the school but also in the larger community. It encourages service-oriented actions, helping those in need, and using one's skills and resources for the betterment of others. Benevolence fosters a culture of giving and uplifting others, which is central to St. Augustine's teachings about selfless love.</p>
+      </div>
+    </div>
+
+    <div class="value-row" style="--val:#8B5CF6;" data-reveal="fade-up">
+      <div class="value-medal"><span class="L">I</span></div>
+      <div class="value-body">
+        <span class="kicker">I · The Pursuit of Knowledge</span>
+        <h2>Innovation</h2>
+        <p>St. Augustine was a thinker who challenged norms and sought deeper understanding of the world around him. Innovation, in the context of the school, means encouraging creative thinking and problem-solving. It's about inspiring students to think critically, question assumptions, and find new ways of addressing challenges, whether in the classroom, in the community, or in the world at large. It reflects the Augustinian spirit of intellectual curiosity and the pursuit of knowledge, always seeking better ways to serve others and contribute to society.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <span class="eyebrow c-sky-light" data-reveal="fade-up">Admissions Open</span>
+    <h2 style="margin-top:10px;" class="c-frost" data-reveal="fade-up">Live the ICCnian values.</h2>
+    <p class="c-soft-slate" data-reveal="fade-up">Begin your formation in Integrity, Collaboration, Compassion, Benevolence, and Innovation. Visit the campus on Plaza Mabini St. or start your application online.</p>
+    <div class="hero-ctas" data-reveal="fade-up">
+      <a class="btn btn-primary c-ink" href="https://iccbalayan.edu.ph/registration-forms/">Apply for Admission</a>
+      <a class="btn btn-ghost c-frost" href="index.html">← Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand" data-reveal="slide-left">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="47" stroke="#60A5FA" stroke-width="1.5"/>
+          <path d="M50 26 L50 62 M38 40 L62 40" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <span class="name c-frost" style="font-family:'Fraunces',serif;font-weight:600;">Immaculate Conception College of Balayan, Inc.</span>
+          <p class="c-muted">Plaza Mabini St., Balayan, Batangas 4213, Philippines</p>
+        </div>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">About</h5>
+        <ul>
+          <li><a href="chronicles.html" class="c-muted">History of ICC</a></li>
+          <li><a href="mission-vision.html" class="c-muted">Mission & Vision</a></li>
+          <li><a href="core-values.html" class="c-muted">Core Values</a></li>
+          <li><a href="https://iccbalayan.edu.ph/accreditations/" class="c-muted">Accreditations</a></li>
+        </ul>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">Inside ICCBI</h5>
+        <ul>
+          <li><a href="https://iccbalayan.edu.ph/board-of-trustees/" class="c-muted">Board of Trustees</a></li>
+          <li><a href="https://iccbalayan.edu.ph/administrative-board/" class="c-muted">Administrative Board</a></li>
+          <li><a href="https://iccbalayan.edu.ph/directory/" class="c-muted">Directory</a></li>
+        </ul>
+      </div>
+      <div data-reveal="slide-right">
+        <h5 class="c-sky-light">Contact</h5>
+        <ul>
+          <li class="c-muted">Directress' Office: (043) 727-6760</li>
+          <li class="c-muted">Telefax: (043) 407-1034</li>
+          <li><a href="mailto:mail@iccbalayan.edu.ph" class="c-muted">mail@iccbalayan.edu.ph</a></li>
+          <li><a href="https://iccbalayan.edu.ph/alumni-directory/" class="c-muted">Alumni Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="c-dark-muted">© 2026 Immaculate Conception College of Balayan, Inc. · Redesign Concept</span>
+      <span class="c-dark-muted">Design direction: The Chronicle — Blue & White</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const siteHeader = document.querySelector('header.site');
+  function setHeaderBottom(){
+    const r = siteHeader.getBoundingClientRect();
+    document.documentElement.style.setProperty('--header-h', Math.max(r.bottom, 0) + 'px');
+  }
+  setHeaderBottom();
+  window.addEventListener('resize', setHeaderBottom);
+  window.addEventListener('scroll', setHeaderBottom, {passive:true});
+
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('revealed');
+      else entry.target.classList.remove('revealed');
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>

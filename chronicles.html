@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Chronicle — Immaculate Conception College of Balayan, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&family=UnifrakturCook:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#274fab; --ink-2:#1E293B; --ink-soft:#475569;
+    --parchment:#EFF6FF; --parchment-deep:#DBEAFE; --paper:#F8FAFC;
+    --blue:#1d93d8; --blue-deep:#1E3A8A;
+    --sky:#60A5FA; --sky-light:#93C5FD; --teal:#0891B2;
+    --rule: rgba(15,23,42,0.14);
+    --shadow: 0 18px 40px -20px rgba(15,23,42,0.35);
+    --white:#FFFFFF; --frost:#F0F9FF; --light-slate:#E2E8F0;
+    --slate:#CBD5E1; --muted:#94A3B8; --dark-muted:#64748B; --soft-slate:#BFDBFE;
+  }
+  .c-ink{color:var(--ink);}.c-ink-2{color:var(--ink-2);}.c-ink-soft{color:var(--ink-soft);}
+  .c-blue{color:var(--blue);}.c-blue-deep{color:var(--blue-deep);}
+  .c-sky{color:var(--sky);}.c-sky-light{color:var(--sky-light);}
+  .c-teal{color:var(--teal);}.c-white{color:var(--white);}.c-frost{color:var(--frost);}
+  .c-light-slate{color:var(--light-slate);}.c-slate{color:var(--slate);}
+  .c-muted{color:var(--muted);}.c-dark-muted{color:var(--dark-muted);}
+  .c-soft-slate{color:var(--soft-slate);}.c-parchment{color:var(--parchment);}
+
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--parchment);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
+
+  [data-reveal]{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;}
+  [data-reveal="fade-up"]{transform:translateY(40px);}
+  [data-reveal="fade-up"].revealed{opacity:1;transform:translateY(0);}
+  [data-reveal="fade"]{transform:translateY(0);}
+  [data-reveal="fade"].revealed{opacity:1;}
+  [data-reveal="slide-left"]{transform:translateX(-60px);}
+  [data-reveal="slide-left"].revealed{opacity:1;transform:translateX(0);}
+  [data-reveal="slide-right"]{transform:translateX(60px);}
+  [data-reveal="slide-right"].revealed{opacity:1;transform:translateX(0);}
+
+  /* --- STAGGER ANIMATIONS (from index) --- */
+  [data-reveal-stagger] > [data-reveal]:nth-child(1){transition-delay:0s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(2){transition-delay:0.1s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(3){transition-delay:0.2s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(4){transition-delay:0.3s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(5){transition-delay:0.4s;}
+  [data-reveal-stagger] > [data-reveal]:nth-child(6){transition-delay:0.5s;}
+
+  /* --- HERO ENTRY ANIMATIONS (from index) --- */
+  .hero-enter{opacity:0;transform:translateY(30px);animation:heroEnter 1s cubic-bezier(.22,1,.36,1) forwards;}
+  .hero-enter-delay-1{animation-delay:.2s;} .hero-enter-delay-2{animation-delay:.4s;}
+  .hero-enter-delay-3{animation-delay:.6s;} .hero-enter-delay-4{animation-delay:.8s;}
+  @keyframes heroEnter{to{opacity:1;transform:translateY(0);}}
+
+  .utility-bar{background:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+  .utility-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;flex-wrap:wrap;gap:8px;}
+  .utility-bar a{text-decoration:none;opacity:.85;} .utility-bar a:hover{opacity:1;}
+  .utility-left{display:flex;gap:20px;flex-wrap:wrap;}
+  .utility-right{display:flex;gap:16px;}
+
+  /* ============ HEADER / BRAND ============ */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(239,246,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);}
+  nav.main{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 32px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+  .brand svg{width:40px;height:40px;flex-shrink:0;}
+  .brand-text{line-height:1.1;display:flex;flex-direction:column;justify-content:center;}
+  .brand-text .name{font-family:'UnifrakturCook','Fraunces',serif;font-size:clamp(.78rem,1.7vw,1.05rem);font-weight:700;display:block;white-space:nowrap;letter-spacing:0;}
+  .brand-text .sub{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:3px;}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0;}
+  .nav-links > li{position:relative;}
+  .nav-links > li > a{text-decoration:none;font-size:.88rem;font-weight:500;padding:8px 0;position:relative;white-space:nowrap;}
+  .nav-links > li > a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--sky);transition:right .25s ease;}
+  .nav-links > li:hover > a::after{right:0;}
+  .nav-links > li > a.active-page::after{right:0;background:var(--blue);}
+  .nav-links .apply{background:var(--blue);padding:10px 18px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;white-space:nowrap;}
+  .nav-links .apply::after{display:none;}
+  .nav-links .apply:hover{background:var(--blue-deep);}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;text-decoration:none;font-weight:600;font-size:.9rem;border-radius:2px;font-family:'Poppins',sans-serif;transition:transform .2s ease,background .2s ease;}
+  .btn-primary{background:var(--sky);}
+  .btn-primary:hover{background:var(--sky-light);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(224,242,254,.35);}
+  .btn-ghost:hover{border-color:var(--sky-light);}
+
+  /* ============ CHRONICLE HERO ============ */
+  .page-hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 15% 0%,var(--ink-2) 0%,var(--ink) 55%,var(--blue-deep) 100%);
+    overflow:hidden;
+    padding:120px 0 100px;
+  }
+  .page-hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:url('assets/images/Imaculate.png');
+    background-size:cover;background-position:center;background-repeat:no-repeat;
+    filter:brightness(.12) saturate(.15);opacity:.6;z-index:0;pointer-events:none;
+  }
+  .page-hero > .wrap{position:relative;z-index:1;}
+  .page-hero .wrap{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:780px;margin:0 auto;text-align:center;}
+  .page-hero .plaque{
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid rgba(147,197,253,.45);
+    padding:7px 14px;border-radius:999px;
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .page-hero h1{
+    font-size:clamp(2.6rem,5vw,4.4rem);
+    font-weight:600;line-height:1.05;
+  }
+  .page-hero h1 em{font-style:italic;font-weight:500;}
+  .page-hero .lede{
+    font-size:1.12rem;line-height:1.7;max-width:60ch;margin-top:6px;
+  }
+  .hero-meta{
+    display:flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+    letter-spacing:.06em;text-transform:uppercase;
+    border-top:1px solid rgba(147,197,253,.25);
+    padding-top:24px;width:100%;
+  }
+  .hero-meta-item{display:flex;flex-direction:column;gap:4px;}
+  .hero-meta-item strong{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;letter-spacing:0;}
+
+  /* ============ HERITAGE INTRO ============ */
+  .heritage-intro{background:var(--parchment);padding:96px 0 64px;}
+  .heritage-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;}
+  .heritage-left .quote-mark{
+    font-family:'Fraunces',serif;font-size:6rem;line-height:.8;
+    font-weight:700;margin-bottom:-10px;display:block;
+  }
+  .heritage-left blockquote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;
+    line-height:1.5;font-weight:500;margin:0 0 16px;
+  }
+  .heritage-left cite{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-style:normal;
+    letter-spacing:.1em;text-transform:uppercase;display:block;
+  }
+  .heritage-right p{font-size:1.06rem;line-height:1.8;margin:0 0 18px;}
+  .heritage-right p:first-of-type::first-letter{
+    font-family:'Fraunces',serif;font-size:3.6rem;font-weight:700;
+    float:left;line-height:.8;padding-right:10px;padding-top:8px;
+  }
+
+  /* ============ FOUNDERS ============ */
+  .founders{background:var(--paper);padding:96px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;margin-top:10px;}
+  .section-head p{margin-top:14px;line-height:1.7;font-size:1.02rem;}
+  .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .founder-card{
+    background:var(--parchment);border:1px solid var(--rule);border-radius:3px;
+    padding:36px;position:relative;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .founder-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--sky);}
+  .founder-icon{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),var(--blue-deep));
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .founder-icon svg{width:32px;height:32px;color:var(--sky-light);}
+  .founder-card .role{
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;display:block;margin-bottom:8px;
+  }
+  .founder-card h3{font-size:1.28rem;font-weight:600;margin-bottom:12px;}
+  .founder-card p{font-size:.94rem;line-height:1.65;margin:0;}
+
+  /* ============ TIMELINE ============ */
+  .chronicle{background:var(--ink);padding:96px 0;position:relative;overflow:hidden;}
+  .chronicle::before{
+    content:"";position:absolute;top:-50%;right:-10%;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(96,165,250,.08) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .chronicle .section-head{position:relative;z-index:1;}
+  .timeline{position:relative;max-width:880px;margin:0 auto;z-index:1;}
+  .timeline::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(var(--sky),rgba(96,165,250,.15));
+    transform:translateX(-50%);
+  }
+  /* Each group = one photo + one or two year entries sharing it.
+     Rows are EXPLICIT so every dot locks to its year. */
+  .t-group{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-bottom:34px;position:relative;}
+  .t-group .t-dot{
+    width:12px;height:12px;border-radius:50%;background:var(--sky);
+    margin:6px auto 0;box-shadow:0 0 0 4px var(--ink),0 0 0 5px rgba(96,165,250,.4);
+    grid-column:2;
+  }
+  .t-group > .t-dot:nth-child(1){grid-row:1;}
+  .t-group > .t-entry:nth-child(2){grid-row:1;}
+  .t-group > .t-dot:nth-child(3){grid-row:2;}
+  .t-group > .t-entry:nth-child(4){grid-row:2;}
+  /* Default: text on the RIGHT, photo on the LEFT. ".alt" flips it. */
+  .t-group .t-entry{grid-column:3;padding:0 0 26px 32px;}
+  .t-group.alt .t-entry{grid-column:1;text-align:right;padding:0 32px 26px 0;}
+  .t-group .t-year{
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.05rem;
+    margin:0 0 10px;
+  }
+  .t-group h4{font-size:1.08rem;font-weight:600;margin:0 0 8px;}
+  .t-group p{font-size:.92rem;line-height:1.65;margin:0;}
+
+  /* --- TIMELINE ARCHIVE PHOTOS --- */
+  .t-group .t-media{min-width:0;grid-column:1;grid-row:1;padding-right:32px;}
+  .t-group.two .t-media{grid-row:1 / span 2;}
+  .t-group.alt .t-media{grid-column:3;padding-right:0;padding-left:32px;}
+  .t-photo{margin:0;}
+  .t-frame{
+    position:relative;aspect-ratio:4/3;border-radius:3px;overflow:hidden;
+    border:1px solid rgba(147,197,253,.35);
+    background:linear-gradient(160deg,rgba(96,165,250,.14),rgba(30,58,138,.3));
+    box-shadow:0 16px 34px -20px rgba(2,6,23,.9);
+  }
+  .t-frame img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(.9);transition:transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .t-photo:hover .t-frame img{transform:scale(1.04);}
+  .ph-fallback{
+    position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;
+    align-items:center;justify-content:center;color:var(--sky-light);
+    font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .ph-fallback svg{width:30px;height:30px;opacity:.65;}
+  .t-photo figcaption{
+    font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;
+    text-transform:uppercase;margin-top:9px;text-align:right;
+  }
+  .t-group.alt .t-photo figcaption{text-align:left;}
+
+  /* ============ ERA DIVIDERS ============ */
+  .era-divider{
+    text-align:center;padding:40px 0;margin:20px 0;
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+    letter-spacing:.25em;text-transform:uppercase;
+    position:relative;z-index:2;grid-column:1 / -1;
+  }
+  .era-divider span{
+    background:var(--ink);padding:0 20px;position:relative;z-index:2;
+  }
+  .era-divider::before{
+    content:"";position:absolute;left:10%;right:10%;;top:50%;
+    height:1px;background:rgba(147,197,253,.2);z-index:1;
+  }
+
+  /* ============ LEGACY CTA ============ */
+  .legacy-cta{
+    background:linear-gradient(120deg,var(--blue-deep),var(--blue));
+    text-align:center;padding:88px 0;position:relative;overflow:hidden;
+  }
+  .legacy-cta::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 20% 50%,rgba(147,197,253,.15) 0%,transparent 50%),
+                     radial-gradient(circle at 80% 50%,rgba(147,197,253,.1) 0%,transparent 50%);
+  }
+  .legacy-cta > .wrap{position:relative;z-index:1;}
+  .legacy-cta h2{font-size:clamp(1.9rem,3.6vw,2.9rem);}
+  .legacy-cta p{max-width:58ch;margin:16px auto 32px;line-height:1.6;}
+  .legacy-cta .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .legacy-cta .btn-ghost{border-color:rgba(240,249,255,.4);}
+
+  footer{background:var(--ink);padding:72px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:56px;}
+  .footer-brand{display:flex;gap:14px;align-items:flex-start;}
+  .footer-brand svg{width:46px;flex-shrink:0;}
+  .footer-brand p{font-size:.86rem;line-height:1.6;margin-top:10px;max-width:32ch;}
+  footer h5{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{text-decoration:none;font-size:.88rem;} footer a:hover{color:var(--sky-light);}
+  .footer-bottom{border-top:1px solid rgba(148,163,184,.18);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+
+  @media (max-width:1100px){
+    .nav-links{gap:16px;}
+    .nav-links > li > a{font-size:.84rem;}
+    .brand-text .name{font-size:clamp(.75rem,1.6vw,.95rem);}
+    .brand-text .sub{font-size:.52rem;}
+  }
+  @media (max-width:992px){
+    nav.main{gap:12px;}
+    .nav-links{position:fixed;inset:0 0 0 auto;top:0;height:100vh;width:78%;background:var(--parchment);flex-direction:column;align-items:flex-start;padding:100px 28px 28px;gap:22px;transform:translateX(100%);transition:transform .3s ease;box-shadow:-10px 0 30px rgba(0,0,0,.15);}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links > li > a{font-size:.95rem;}
+    .hamburger{display:block;}
+  }
+  @media (max-width:960px){
+    .heritage-grid{grid-template-columns:1fr;gap:40px;}
+    .founders-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 20px;}
+    .page-hero{padding:80px 0 60px;}
+    .hero-meta{gap:20px;}
+    .t-group{grid-template-columns:28px 1fr;margin-bottom:26px;}
+    .timeline::before{left:13px;}
+    .t-group > .t-dot:nth-child(1),.t-group > .t-entry:nth-child(2),
+    .t-group > .t-dot:nth-child(3),.t-group > .t-entry:nth-child(4){grid-row:auto;}
+    .t-group .t-dot{grid-column:1;margin:6px 0 0;}
+    .t-group .t-entry,.t-group.alt .t-entry{grid-column:2;text-align:left;padding:0 0 22px 20px;}
+    .t-group .t-media,.t-group.two .t-media,.t-group.alt .t-media{grid-column:2;grid-row:auto;padding:14px 0 0 20px;}
+    .t-group .t-photo figcaption,.t-group.alt .t-photo figcaption{text-align:left;}
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="utility-left">
+      <span class="c-white">Plaza Mabini St., Balayan, Batangas 4213</span>
+      <a href="tel:0437276760" class="c-white">(043) 727-6760</a>
+    </div>
+    <div class="utility-right">
+      <a href="https://www.facebook.com/ICCBalayanIncOfficial" class="c-white">Facebook</a>
+      <a href="https://www.youtube.com/@immaculateconceptioncolleg7709" class="c-white">YouTube</a>
+      <a href="mailto:mail@iccbalayan.edu.ph" class="c-white">mail@iccbalayan.edu.ph</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <nav class="main wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="47" stroke="#1D4ED8" stroke-width="2"/>
+        <circle cx="50" cy="50" r="40" stroke="#60A5FA" stroke-width="1"/>
+        <path d="M50 26 L50 62 M38 40 L62 40" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M50 62 C46 68 40 70 34 70 C40 74 46 76 50 82 C54 76 60 74 66 70 C60 70 54 68 50 62 Z" fill="#60A5FA"/>
+        <text x="50" y="16" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" letter-spacing="1" fill="#0F172A">ICCBI</text>
+        <text x="50" y="93" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" letter-spacing="1" fill="#0F172A">EST. 1935</text>
+      </svg>
+      <span class="brand-text">
+        <span class="name c-ink">Immaculate Conception College of Balayan</span>
+        <span class="sub c-blue">Augustinian Recollect Sisters</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="c-ink">Home</a></li>
+      <li><a href="index.html#about" class="c-ink">About</a></li>
+      <li><a href="index.html#values" class="c-ink">Core Values</a></li>
+      <li><a href="index.html#academics" class="c-ink">Academics</a></li>
+      <li><a href="chronicles.html" class="c-ink active-page">Our Chronicle</a></li>
+      <li><a href="index.html#campus" class="c-ink">Campus</a></li>
+      <li><a href="https://iccbalayan.edu.ph/contact/" class="c-ink">Contact</a></li>
+      <li><a class="apply c-white" href="https://iccbalayan.edu.ph/registration-forms/">Apply Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="plaque c-sky-light hero-enter hero-enter-delay-1">✦ The Chronicle · 1935 – Present</div>
+    <h1 class="c-frost hero-enter hero-enter-delay-2">Nine decades of <em class="c-sky-light">faith, formation,</em> and Balayan.</h1>
+    <p class="lede c-slate hero-enter hero-enter-delay-3">From the old convent ceded by Rev. Fr. Aniceto Cordero to a four-level Catholic institution, this is the story of how ICCBI has carried Christ-centered education through ninety years of change in the Philippines.</p>
+    <div class="hero-meta" data-reveal-stagger>
+      <div class="hero-meta-item" data-reveal="fade-up">
+        <span class="c-muted">Founded</span>
+        <strong class="c-frost">1935</strong>
+      </div>
+      <div class="hero-meta-item" data-reveal="fade-up">
+        <span class="c-muted">Years of Service</span>
+        <strong class="c-frost">90+</strong>
+      </div>
+      <div class="hero-meta-item" data-reveal="fade-up">
+        <span class="c-muted">Grade Levels</span>
+        <strong class="c-frost">K–College</strong>
+      </div>
+      <div class="hero-meta-item" data-reveal="fade-up">
+        <span class="c-muted">Religious Order</span>
+        <strong class="c-frost">AR Sisters</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERITAGE INTRO ============ -->
+<section class="heritage-intro">
+  <div class="wrap heritage-grid">
+    <div class="heritage-left" data-reveal="slide-left">
+      <span class="quote-mark c-blue">"</span>
+      <blockquote class="c-ink">A school is not its buildings. It is the generations that pass through them, carrying forward what they were given.</blockquote>
+      <cite class="c-ink-soft">— ICCBI Heritage Statement</cite>
+    </div>
+    <div class="heritage-right" data-reveal="slide-right">
+      <p class="c-ink-soft">In 1935, Rev. Fr. Aniceto Cordero founded a Catholic school in the town of Balayan, approved by His Excellency Msgr. Alfredo Verzosa, Bishop of Lipa, so that Filipino youth could receive a solid, well-grounded Catholic education. Fr. Cordero ceded the old convent to the sisters, and it became the school's first premises — its management placed entirely in the hands of the Augustinian Recollect Sisters, with Sor Rita de la Immaculada Maria as Superior.</p>
+      <p class="c-ink-soft">What began with a Primary course recognized in 1937 grew — through Intermediate and Secondary courses, collegiate programs, a Boys Department, co-education, and new buildings — into a four-level institution serving learners from elementary through college. Today, ICCBI continues under the same Augustinian Recollect charism that founded it, while preparing students for the demands of a 21st-century Philippines.</p>
+      <p class="c-ink-soft">This page is the school's written memory. The milestones below mark not only what ICCBI has built, but what it has become.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDERS ============ -->
+<section class="founders">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade-up">
+      <span class="eyebrow c-blue">Founding Voices</span>
+      <h2 class="c-ink">The people who began it.</h2>
+      <p class="c-ink-soft">Two figures — one a parish priest, the other a religious sister — laid the foundations that still shape ICCBI today.</p>
+    </div>
+    <div class="founders-grid" data-reveal-stagger>
+      <div class="founder-card" data-reveal="fade-up">
+        <div class="founder-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+        </div>
+        <span class="role c-teal">Parish Priest · Founder</span>
+        <h3 class="c-ink">Rev. Fr. Aniceto Cordero</h3>
+        <p class="c-ink-soft">The parish priest of Balayan who founded the school in 1935, with its establishment approved by Msgr. Alfredo Verzosa, Bishop of Lipa. He ceded the old convent to the sisters, and it became the school's first premises.</p>
+      </div>
+      <div class="founder-card" data-reveal="fade-up">
+        <div class="founder-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <span class="role c-teal">First Superior · AR Sisters</span>
+        <h3 class="c-ink">Sor Rita de la Immaculada Maria</h3>
+        <p class="c-ink-soft">Led the first community of Augustinian Recollect Sisters — with Sor Soledad de San Antonio, Sor Teresita de San Rafael, and Sor Socorro de la Sgda. Corazon de Jesus — entrusted with the school's entire management in 1935.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="chronicle">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow c-sky-light" data-reveal="fade-up">The Timeline</span>
+      <h2 class="c-frost" data-reveal="fade-up">Nine decades, told year by year.</h2>
+      <p class="c-muted" data-reveal="fade-up">ICCBI's story since 1935 — a record of the milestones that shaped the school it is today.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="era-divider" data-reveal="fade">
+        <span class="c-sky-light">THE FOUNDING ERA · 1935 – 1940s</span>
+      </div>
+
+      <!-- 1935 · text right / photo left -->
+      <div class="t-group" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1935</div>
+          <h4 class="c-frost">Foundation</h4>
+          <p class="c-muted">Immaculate Conception College is founded in Balayan by Rev. Fr. Aniceto Cordero, its establishment approved by Msgr. Alfredo Verzosa, Bishop of Lipa. The old convent becomes the school's first premises, and management is entrusted to the Augustinian Recollect Sisters under Sor Rita de la Immaculada Maria.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/fr_cordero.jpg" alt="Rev. Fr. Aniceto Cordero, founder of the school" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1935</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 1937 + 1941 · text left / photo right -->
+      <div class="t-group alt two" data-reveal="slide-left">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1937</div>
+          <h4 class="c-frost">Primary Course Recognized</h4>
+          <p class="c-muted">The A.R. Sisters offer the Primary course, which receives official recognition on April 16, 1937.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1941</div>
+          <h4 class="c-frost">A New Name</h4>
+          <p class="c-muted">The school's name is changed to Immaculate Conception College. 1938 – The General Intermediate Course was offered and obtained its recognition on April 7, 1938. Secondary Course was also opened and given recognition.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/old%20onvent.jpg" alt="The old convent, first premises of the school" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1937 – 1941</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 1942 + 1947 · text right / photo left -->
+      <div class="t-group two" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1942</div>
+          <h4 class="c-frost">First Collegiate Courses</h4>
+          <p class="c-muted">Several collegiate courses are offered — Preparatory Law, Associate in Commercial Science, and Junior Normal — under Sor Augustias del Divino Amor.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1947</div>
+          <h4 class="c-frost">The Boys Department</h4>
+          <p class="c-muted">Rev. Fr. Estanislao Cabrera, assisted by Ms. Corazon Ramos, opens the Boys Department of the school.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets\images\history\mo_general.jpg" alt="The first collegiate students and the Boys Department" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1942 – 1947</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="era-divider" data-reveal="fade">
+        <span class="c-sky-light">GROWTH & CO-EDUCATION · 1950s – 1980s</span>
+      </div>
+
+      <!-- 1958 + 1962 · text left / photo right -->
+      <div class="t-group alt two" data-reveal="slide-left">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1958</div>
+          <h4 class="c-frost">BSEd & Co-Education</h4>
+          <p class="c-muted">The Bachelor of Science in Education is given recognition with the full cooperation of Rev. Fr. Estanislao Cabrera, who also realizes the need for co-education.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1962</div>
+          <h4 class="c-frost">New Degree Programs</h4>
+          <p class="c-muted">Additional courses are offered: Bachelor of Science in Elementary Education, Bachelor of Science in Home Economics, and Bachelor of Science in Commerce.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/augustias.jpg" alt="Education students as new degrees are added" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1958 – 1962</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 1963 + 1988 · text right / photo left -->
+      <div class="t-group two" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1963</div>
+          <h4 class="c-frost">College Building Blessed</h4>
+          <p class="c-muted">Construction of the College Building is finished, and the building is blessed by His Excellency Msgr. Olalia, Bishop of Lipa.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1988</div>
+          <h4 class="c-frost">High School Building</h4>
+          <p class="c-muted">The High School building is built, and made ready in 1990 — giving the secondary department a home of its own.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets\images\history\classpic_boysdept-768x581.jpg" alt="The College Building and High School building" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1963 – 1988</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="era-divider" data-reveal="fade">
+        <span class="c-sky-light">EXPANDING PROGRAMS · 1990s – 2010s</span>
+      </div>
+
+      <!-- 1995 + 2001 · text left / photo right -->
+      <div class="t-group alt two" data-reveal="slide-left">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">1995</div>
+          <h4 class="c-frost">BS Accountancy</h4>
+          <p class="c-muted">The Bachelor of Science in Accountancy is offered, launching ICC into professional licensure education.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2001</div>
+          <h4 class="c-frost">Computer Courses Open</h4>
+          <p class="c-muted">Additional courses open: Associate in Computer Technology, Computer Secretarial Course, and Bachelor of Science in Computer Engineering.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets\images\history\fr_cabrera_withteachers-768x581.jpg" alt="Accountancy and computer courses arrive at ICC" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 1995 – 2001</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 2002 + 2003 · text right / photo left -->
+      <div class="t-group two" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2002</div>
+          <h4 class="c-frost">Talangpaz Building</h4>
+          <p class="c-muted">The Talangpaz building — named after the A.R. foundresses, Mother Dionisia and Mother Cecilia Rosa Talangpaz — is constructed, and blessed on December 2, 2007.</p>
+        </div>
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2003</div>
+          <h4 class="c-frost">CS & IT Programs</h4>
+          <p class="c-muted">In the academic year that follows, ICC opens Bachelor of Science in Computer Science and Bachelor of Science in Information Technology.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/college_bldg-768x581.jpg" alt="The Talangpaz building and new CS and IT labs" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 2002 – 2003</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 2005 · text right / photo left -->
+      <div class="t-group" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2005</div>
+          <h4 class="c-frost">HRM & Accreditation</h4>
+          <p class="c-muted">BS Hotel and Restaurant Management is added to the curricular offerings, and all ICC programs go through the PACUCOA, PAASCU, and TESDA accreditation process.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/hs_bldg.jpg" alt="HRM students and accreditation milestones, 2005" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 2005</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 2011 · text left / photo right -->
+      <div class="t-group alt" data-reveal="slide-left">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2011</div>
+          <h4 class="c-frost">Tourism Management</h4>
+          <p class="c-muted">ICC offers BS Tourism Management, while TESDA-recognized Bookkeeping NC III is embedded in the BS Accountancy curriculum.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets\images\history\computer_lab.jpg" alt="The first BS Tourism Management cohort, 2011" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 2011</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="era-divider" data-reveal="fade">
+        <span class="c-sky-light">THE MODERN CAMPUS · 2016 – Today</span>
+      </div>
+
+      <!-- 2016 · text right / photo left -->
+      <div class="t-group" data-reveal="slide-right">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2016</div>
+          <h4 class="c-frost">Senior High Launches</h4>
+          <p class="c-muted">With the K to 12 curriculum, ICC is granted a provisional permit to operate Senior High effective SY 2016–2017 — offering ABM, STEM, and HUMSS strands, plus Home Economics and ICT Tech-Voc tracks.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/Regina-Angelorum.jpg" alt="The first Senior High cohort, SY 2016 to 2017" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Archive · 2016</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 2019 · text left / photo right -->
+      <div class="t-group alt" data-reveal="slide-left">
+        <div class="t-dot"></div>
+        <div class="t-entry">
+          <div class="t-year c-sky-light">2019 – Present</div>
+          <h4 class="c-frost">Regina Angelorum & ANNEX</h4>
+          <p class="c-muted">ICC keeps itself innovated with the two-storey Regina Angelorum building for its growing SHS population, and the three-storey ANNEX building for college and elementary pupils.</p>
+        </div>
+        <div class="t-media">
+          <figure class="t-photo">
+            <div class="t-frame">
+              <span class="ph-fallback" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-4 3 2.5L16 11l5 4.5"/></svg>
+                <span>Archive photo</span>
+              </span>
+              <img src="assets/images/history/IMG_0836-768x508.jpg" alt="The Regina Angelorum and ANNEX buildings" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <figcaption class="c-muted">Campus · 2019 – Today</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGACY CTA ============ -->
+<section class="legacy-cta">
+  <div class="wrap">
+    <span class="eyebrow c-sky-light" data-reveal="fade-up">The Next Chapter</span>
+    <h2 class="c-frost" style="margin-top:10px;" data-reveal="fade-up">The next ninety years begin with you.</h2>
+    <p class="c-soft-slate" data-reveal="fade-up">Every ICCnian becomes part of this chronicle. Whether you're enrolling in Grade 1 or pursuing a bachelor's degree, you join a 90-year line of learners formed in faith, scholarship, and service.</p>
+    <div class="cta-actions" data-reveal="fade-up">
+      <a class="btn btn-primary c-ink" href="https://iccbalayan.edu.ph/registration-forms/">Apply for Admission</a>
+      <a class="btn btn-ghost c-frost" href="index.html">← Back to Homepage</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid" data-reveal-stagger>
+      <div class="footer-brand" data-reveal="slide-left">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="47" stroke="#60A5FA" stroke-width="1.5"/>
+          <path d="M50 26 L50 62 M38 40 L62 40" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <span class="name c-frost" style="font-family:'Fraunces',serif;font-weight:600;">Immaculate Conception College of Balayan, Inc.</span>
+          <p class="c-muted">Plaza Mabini St., Balayan, Batangas 4213, Philippines</p>
+        </div>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">About</h5>
+        <ul>
+          <li><a href="chronicles.html" class="c-muted">History of ICC</a></li>
+          <li><a href="https://iccbalayan.edu.ph/mission-and-vision/" class="c-muted">Mission & Vision</a></li>
+          <li><a href="https://iccbalayan.edu.ph/core-values/" class="c-muted">Core Values</a></li>
+          <li><a href="https://iccbalayan.edu.ph/accreditations/" class="c-muted">Accreditations</a></li>
+        </ul>
+      </div>
+      <div data-reveal="fade-up">
+        <h5 class="c-sky-light">Inside ICCBI</h5>
+        <ul>
+          <li><a href="https://iccbalayan.edu.ph/board-of-trustees/" class="c-muted">Board of Trustees</a></li>
+          <li><a href="https://iccbalayan.edu.ph/administrative-board/" class="c-muted">Administrative Board</a></li>
+          <li><a href="https://iccbalayan.edu.ph/directory/" class="c-muted">Directory</a></li>
+        </ul>
+      </div>
+      <div data-reveal="slide-right">
+        <h5 class="c-sky-light">Contact</h5>
+        <ul>
+          <li class="c-muted">Directress' Office: (043) 727-6760</li>
+          <li class="c-muted">Telefax: (043) 407-1034</li>
+          <li><a href="mailto:mail@iccbalayan.edu.ph" class="c-muted">mail@iccbalayan.edu.ph</a></li>
+          <li><a href="https://iccbalayan.edu.ph/alumni-directory/" class="c-muted">Alumni Directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" data-reveal="fade">
+      <span class="c-dark-muted">© 2026 Immaculate Conception College of Balayan, Inc. · Redesign Concept</span>
+      <span class="c-dark-muted">Design direction: The Chronicle — Blue & White</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      } else {
+        entry.target.classList.remove('revealed');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
