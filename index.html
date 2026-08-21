@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Immaculate Conception College of Balayan, Inc. — Redesign Concept (Blue & White)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,7 @@
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         body {
@@ -58,9 +59,11 @@
             width: 100%;
             min-height: 100vh;
             min-height: 100dvh;
+            /* Prevent zoom via touch */
+            touch-action: pan-y pinch-zoom;
         }
 
-        /* body lock when menu open — applied by JS */
+        /* body lock when menu open */
         body.menu-open {
             overflow: hidden !important;
             height: 100% !important;
@@ -68,6 +71,7 @@
             width: 100% !important;
             top: 0;
             left: 0;
+            touch-action: none !important;
         }
 
         img {
@@ -656,6 +660,7 @@
             transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
             border: none;
             cursor: pointer;
+            touch-action: manipulation;
         }
         .btn-primary {
             background: var(--sky);
@@ -979,6 +984,7 @@
             background: rgba(15, 23, 42, .65);
             transition: background .2s ease;
             color: var(--frost);
+            touch-action: manipulation;
         }
         .video-sound:hover {
             background: var(--blue);
@@ -1173,6 +1179,7 @@
             padding: 12px;
             transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
             cursor: pointer;
+            touch-action: manipulation;
         }
         .accred-card:hover {
             transform: translateY(-4px);
@@ -1455,6 +1462,7 @@
             align-items: center;
             justify-content: center;
             font-family: 'Poppins', sans-serif;
+            touch-action: manipulation;
         }
         .cert-close:hover {
             background: var(--blue);
@@ -1589,6 +1597,7 @@
             justify-content: center;
             transition: transform .2s ease, background .2s ease;
             color: var(--white);
+            touch-action: manipulation;
         }
         .guide-fab:hover {
             background: var(--blue-deep);
@@ -1640,6 +1649,7 @@
             padding: 2px 4px;
             margin-top: -2px;
             color: var(--ink-soft);
+            touch-action: manipulation;
         }
         .guide-list {
             list-style: none;
@@ -1723,12 +1733,9 @@
                 gap: 8px 12px;
             }
 
-            /* hamburger */
             .hamburger {
                 display: block;
             }
-
-            /* overlay */
             .nav-overlay {
                 display: block;
             }
@@ -1755,7 +1762,6 @@
                 z-index: 46;
                 border-left: 1px solid var(--rule);
                 -webkit-overflow-scrolling: touch;
-                /* smooth scroll on iOS */
             }
             .nav-links.open {
                 transform: translateX(0);
@@ -1786,7 +1792,6 @@
                 color: var(--blue);
             }
 
-            /* mobile submenu toggle */
             .mobile-submenu-toggle {
                 display: inline-flex;
                 margin-left: 6px;
@@ -1794,7 +1799,6 @@
                 padding: 2px 0 2px 6px;
             }
 
-            /* hide desktop submenu hover */
             .nav-links>li.has-sub::after {
                 display: none;
             }
@@ -1805,7 +1809,6 @@
                 transform: none;
             }
 
-            /* mobile submenu — scrollable inside nav */
             .sub-menu {
                 position: static;
                 transform: none;
@@ -1820,7 +1823,6 @@
                 margin: 0;
                 transition: max-height .4s cubic-bezier(.22, 1, .36, 1), padding .3s ease, opacity .3s ease;
                 opacity: 0;
-                /* no overflow hidden on content — will expand nav scroll */
             }
             .sub-menu.open {
                 max-height: 1200px;
@@ -1865,7 +1867,6 @@
                 line-height: 1.5;
             }
 
-            /* apply button in mobile */
             .nav-links .apply {
                 background: var(--blue);
                 padding: 10px 16px;
@@ -1879,7 +1880,6 @@
                 background: var(--blue-deep);
             }
 
-            /* hero */
             .hero {
                 padding: 56px 0 48px;
                 min-height: 50vh;
@@ -1889,7 +1889,6 @@
                 font-size: clamp(1.6rem, 4.5vw, 2.6rem);
             }
 
-            /* numbers */
             .num-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1900,18 +1899,13 @@
                 border-top: 1px solid var(--rule);
             }
 
-            /* news */
             .news-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
-            /* about */
             .about-top {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
-
-            /* plates */
             .plate,
             .plate.flip {
                 grid-template-columns: 1fr;
@@ -1925,25 +1919,17 @@
             .plate-body {
                 padding: 24px 20px;
             }
-
-            /* hymn */
             .hymn-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-
-            /* accreditations */
             .accred-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
-            /* footer */
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 28px;
             }
-
-            /* sections */
             section {
                 padding: 56px 0;
             }
@@ -1997,7 +1983,6 @@
                 padding: 6px 14px;
                 min-height: 48px;
             }
-
             .news-grid {
                 grid-template-columns: 1fr;
             }
@@ -2330,6 +2315,13 @@
                 opacity: 1 !important;
                 transform: none !important;
                 animation: none !important;
+            }
+        }
+
+        /* ===== EXTRA: Prevent zoom via touch events ===== */
+        @supports (touch-action: none) {
+            body {
+                touch-action: pan-y;
             }
         }
     </style>
@@ -3023,7 +3015,6 @@ JAVASCRIPT
             hamburger.setAttribute('aria-expanded', 'false');
             if (navOverlay) navOverlay.classList.remove('open');
             unlockBody();
-            // close submenu too
             subMenu.classList.remove('open');
             if (mobileSubmenuToggle) {
                 mobileSubmenuToggle.classList.remove('open');
@@ -3037,7 +3028,6 @@ JAVASCRIPT
             hamburger.setAttribute('aria-expanded', 'true');
             if (navOverlay) navOverlay.classList.add('open');
             lockBody();
-            // scroll to top of menu
             navLinks.scrollTop = 0;
         }
 
@@ -3052,7 +3042,6 @@ JAVASCRIPT
             });
         }
 
-        // Submenu toggle on mobile
         if (mobileSubmenuToggle) {
             mobileSubmenuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -3060,11 +3049,8 @@ JAVASCRIPT
                 var isOpen = subMenu.classList.toggle('open');
                 mobileSubmenuToggle.classList.toggle('open');
                 mobileSubmenuToggle.setAttribute('aria-expanded', isOpen);
-                // after submenu opens, ensure menu scrolls to show content
                 if (isOpen) {
-                    // small delay to let the height transition start
                     setTimeout(function() {
-                        // ensure the nav-links scrolls to show the submenu
                         var lastItem = subMenu.querySelector('.grid a:last-child');
                         if (lastItem) {
                             lastItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -3074,7 +3060,6 @@ JAVASCRIPT
             });
         }
 
-        // About link on mobile toggles submenu
         if (aboutLink) {
             aboutLink.addEventListener('click', function(e) {
                 if (window.innerWidth <= 992) {
@@ -3084,12 +3069,10 @@ JAVASCRIPT
             });
         }
 
-        // Click overlay to close
         if (navOverlay) {
             navOverlay.addEventListener('click', closeMobileMenu);
         }
 
-        // Close menu when clicking any nav link (except submenu toggle and about link on mobile)
         navLinks.querySelectorAll('a:not(.mobile-submenu-toggle)').forEach(function(a) {
             a.addEventListener('click', function() {
                 if (window.innerWidth <= 992) {
@@ -3099,7 +3082,6 @@ JAVASCRIPT
             });
         });
 
-        // Escape key to close
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && navLinks.classList.contains('open')) {
                 closeMobileMenu();
@@ -3107,7 +3089,6 @@ JAVASCRIPT
             }
         });
 
-        // Click outside submenu on mobile to close it (but not the whole menu)
         document.addEventListener('click', function(e) {
             if (window.innerWidth <= 992) {
                 if (subMenu.classList.contains('open') &&
@@ -3123,13 +3104,11 @@ JAVASCRIPT
             }
         });
 
-        // Reset on resize to desktop
         window.addEventListener('resize', function() {
             if (window.innerWidth > 992) {
                 if (navLinks.classList.contains('open')) {
                     closeMobileMenu();
                 }
-                // ensure submenu is closed
                 subMenu.classList.remove('open');
                 if (mobileSubmenuToggle) {
                     mobileSubmenuToggle.classList.remove('open');
@@ -3184,10 +3163,32 @@ JAVASCRIPT
             }
         });
 
-        // ===== FIX: ensure body unlock on page unload =====
         window.addEventListener('beforeunload', function() {
             unlockBody();
         });
+
+        // ===== EXTRA: prevent pinch zoom via touch events =====
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Also prevent double-tap zoom on mobile
+        var lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+            var now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
 
     })();
 </script>
