@@ -14,6 +14,7 @@
     --blue:#1d93d8; --blue-deep:#1E3A8A;
     --sky:#60A5FA; --sky-light:#93C5FD; --teal:#006f8a;
     --gold:#D9972B;
+    --success:#10B981; /* Green for checkmarks */
     --rule: rgba(15,23,42,0.14);
     --shadow: 0 18px 40px -20px rgba(15,23,42,0.35);
     --white:#FFFFFF; --frost:#F0F9FF; --light-slate:#E2E8F0;
@@ -344,14 +345,114 @@
   .step-content a { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--sky); }
   .step-content a:hover { color: var(--blue-deep); border-color: var(--blue-deep); }
 
+  /* ============ INTERACTIVE CHECKLIST STYLES ============ */
   .requirements-section { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
   .req-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .req-card { background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 24px; }
-  .req-card h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; color: var(--ink); margin: 0 0 12px 0; display: flex; align-items: center; gap: 10px; }
+  .req-card { background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 24px; position: relative; }
+  .req-card h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; color: var(--ink); margin: 0 0 16px 0; display: flex; align-items: center; gap: 10px; }
   .req-card h4 svg { width: 20px; height: 20px; color: var(--teal); }
-  .req-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  .req-card ul li { font-size: 0.88rem; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 8px; }
-  .req-card ul li::before { content: "•"; color: var(--sky); font-weight: bold; margin-top: 1px; }
+  
+  /* Static list for notes */
+  .req-card ul.static-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .req-card ul.static-list li { font-size: 0.88rem; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 8px; }
+  .req-card ul.static-list li::before { content: "•"; color: var(--sky); font-weight: bold; margin-top: 1px; }
+
+  /* Interactive Checklist */
+  .checklist-container { display: flex; flex-direction: column; gap: 0; }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item:hover { background-color: rgba(239, 246, 255, 0.5); margin: 0 -10px; padding-left: 10px; padding-right: 10px; border-radius: 4px; }
+  
+  .checklist-text {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    flex: 1;
+    padding-right: 16px;
+    transition: color 0.2s ease;
+  }
+  
+  .check-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--slate);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--white);
+  }
+  
+  .check-circle svg {
+    width: 14px;
+    height: 14px;
+    color: var(--white);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Checked State */
+  .checklist-item.checked .check-circle {
+    background: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+  }
+  .checklist-item.checked .check-circle svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .checklist-item.checked .checklist-text {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--slate);
+  }
+
+  /* Action Button Area */
+  .checklist-action-area {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .btn-ready {
+    padding: 16px 32px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-ready.disabled {
+    background: var(--light-slate);
+    color: var(--muted);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  .btn-ready.active {
+    background: var(--success);
+    color: var(--white);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  }
+  .btn-ready.active:hover {
+    background: #059669; /* Darker green */
+    transform: translateY(-2px);
+  }
 
   /* ============ QUICK CONTACT CARDS ============ */
   .quick-contact{background:var(--parchment);}
@@ -536,33 +637,76 @@
     <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
       <span class="eyebrow c-blue" data-reveal="fade-up">Preparation</span>
       <h2 class="c-ink" data-reveal="fade-up">Standard Enrollment Requirements</h2>
-      <p class="c-ink-soft" data-reveal="fade-up" style="margin-left:auto; margin-right:auto;">Prepare these common documents ahead of time to ensure a smooth registration process at the Registrar's Office.</p>
+      <p class="c-ink-soft" data-reveal="fade-up" style="margin-left:auto; margin-right:auto;">Click each item below as you prepare your documents. Once everything is ready, the button will unlock.</p>
     </div>
     
     <div class="req-grid" data-reveal-stagger>
+      <!-- Card 1: Academic Records (Interactive) -->
       <div class="req-card" data-reveal="fade-up">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Academic Records</h4>
-        <ul>
-          <li>Report Card / Form 137 (for transferees)</li>
-          <li>Honorable Dismissal (if applicable)</li>
-          <li>Previous school ID (for verification)</li>
-        </ul>
+        <div class="checklist-container">
+          <div class="checklist-item">
+            <span class="checklist-text">Report Card / Form 137</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-text">Honorable Dismissal</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-text">Previous School ID</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Card 2: Personal Documents (Interactive) -->
       <div class="req-card" data-reveal="fade-up">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Personal Documents</h4>
-        <ul>
-          <li>PSA Birth Certificate (Photocopy)</li>
-          <li>Good Moral Character Certificate</li>
-          <li>Recent 2x2 ID Pictures (white background)</li>
-        </ul>
+        <div class="checklist-container">
+          <div class="checklist-item">
+            <span class="checklist-text">PSA Birth Certificate</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-text">Good Moral Certificate</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-text">2x2 ID Pictures (White BG)</span>
+            <div class="check-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Card 3: Important Notes (Static) -->
       <div class="req-card" data-reveal="fade-up">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Important Notes</h4>
-        <ul>
+        <ul class="static-list">
           <li>Requirements may vary by grade level or program.</li>
           <li>Bring original copies for verification purposes.</li>
           <li>Contact the Registrar for specific program needs.</li>
         </ul>
+      </div>
+
+      <!-- Action Button Area -->
+      <div class="checklist-action-area">
+        <button id="readyBtn" class="btn-ready disabled" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span id="btnText">Prepare requirements first (0/6)</span>
+        </button>
       </div>
     </div>
   </div>
@@ -835,6 +979,56 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       closeModal();
+    }
+  });
+
+  // ============ CHECKLIST LOGIC ============
+  const checklistItems = document.querySelectorAll('.checklist-item');
+  const readyBtn = document.getElementById('readyBtn');
+  const btnText = document.getElementById('btnText');
+  const totalItems = checklistItems.length;
+
+  function updateChecklistState() {
+    let checkedCount = 0;
+    checklistItems.forEach(item => {
+      if (item.classList.contains('checked')) {
+        checkedCount++;
+      }
+    });
+
+    // Update button text
+    btnText.textContent = `Prepare requirements first (${checkedCount}/${totalItems})`;
+
+    // Toggle button state
+    if (checkedCount === totalItems) {
+      readyBtn.classList.remove('disabled');
+      readyBtn.classList.add('active');
+      readyBtn.disabled = false;
+      btnText.textContent = "I have prepared my requirements! Proceed →";
+    } else {
+      readyBtn.classList.add('disabled');
+      readyBtn.classList.remove('active');
+      readyBtn.disabled = true;
+    }
+  }
+
+  // Add click listeners to checklist items
+  checklistItems.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('checked');
+      updateChecklistState();
+    });
+  });
+
+  // Initialize state
+  updateChecklistState();
+
+  // Ready Button Action (Example)
+  readyBtn.addEventListener('click', () => {
+    if (!readyBtn.disabled) {
+      alert("Great job! You are ready to proceed to the enrollment steps below.");
+      // Scroll to pathways
+      document.querySelector('.departments').scrollIntoView({ behavior: 'smooth' });
     }
   });
 
