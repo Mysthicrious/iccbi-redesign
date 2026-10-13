@@ -175,17 +175,17 @@
 
   /* ============ VISION ============ */
   .vision-section{background:linear-gradient(160deg,var(--blue-deep),var(--blue));padding:96px 0;}
-  .vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:980px;margin:0 auto;}
   .vision-card{
+    max-width:880px;margin:0 auto;
     background:rgba(15,23,42,.35);border:1px solid rgba(147,197,253,.35);
-    border-radius:3px;padding:30px 32px;backdrop-filter:blur(6px);
-    display:flex;gap:18px;align-items:flex-start;
+    border-radius:3px;padding:56px 64px;backdrop-filter:blur(6px);
+    text-align:center;
     transition:border-color .2s ease,transform .2s ease;
   }
   .vision-card:hover{border-color:var(--sky-light);transform:translateY(-3px);}
-  .vision-card .vnum{font-family:'IBM Plex Mono',monospace;font-size:.78rem;border:1px solid var(--sky);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--sky-light);}
-  .vision-card h4{color:var(--frost);font-size:1.15rem;font-weight:600;margin-bottom:8px;}
-  .vision-card p{color:var(--soft-slate);font-size:.92rem;line-height:1.6;margin:0;}
+  .vision-card .vision-mark{font-family:'Fraunces',serif;font-size:5rem;line-height:.8;color:var(--sky-light);opacity:.6;display:block;margin-bottom:10px;}
+  .vision-card p{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.45;font-weight:500;margin:0 0 20px;color:var(--frost);}
+  .vision-card .vision-tag{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky-light);}
 
   /* ============ LEGACY CTA ============ */
   .legacy-cta{
@@ -245,8 +245,7 @@
   @media (max-width:720px){
     .wrap{padding:0 20px;}
     .page-hero{padding:80px 0 60px;}
-    .vision-grid{grid-template-columns:1fr;}
-    .mission-card{padding:40px 28px;}
+    .mission-card,.vision-card{padding:40px 28px;}
     .footer-grid{grid-template-columns:1fr;gap:32px;}
   }
 </style>
@@ -344,7 +343,7 @@
     </div>
     <div class="mission-card" data-reveal="fade-up">
       <span class="quote-mark">"</span>
-      <p class="c-frost">A life-giving and innovating school community committed to transforming ICCnians into Christ-centered members of society.</p>
+      <p class="c-frost">We transform the whole learner in the Augustinian Recollect way.</p>
       <span class="mission-tag">— ICCBI Mission Statement</span>
     </div>
   </div>
@@ -355,38 +354,13 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow c-sky-light" data-reveal="fade-up">Our Vision</span>
-      <h2 class="c-frost" data-reveal="fade-up">ICCBI commits to —</h2>
-      <p class="c-soft-slate" data-reveal="fade-up">Four commitments that shape every program, classroom, and community activity.</p>
+      <h2 class="c-frost" data-reveal="fade-up">Where ICCBI is headed.</h2>
+      <p class="c-soft-slate" data-reveal="fade-up">The future we hold for every learner in our care.</p>
     </div>
-    <div class="vision-grid">
-      <div class="vision-card" data-reveal="fade-up">
-        <span class="vnum">01</span>
-        <div>
-          <h4>God-filled Friendship</h4>
-          <p>Strengthen God-filled friendship.</p>
-        </div>
-      </div>
-      <div class="vision-card" data-reveal="fade-up">
-        <span class="vnum">02</span>
-        <div>
-          <h4>Development towards Transformation</h4>
-          <p>Facilitate development towards transformation.</p>
-        </div>
-      </div>
-      <div class="vision-card" data-reveal="fade-up">
-        <span class="vnum">03</span>
-        <div>
-          <h4>Christian Leadership</h4>
-          <p>Practice Christian leadership.</p>
-        </div>
-      </div>
-      <div class="vision-card" data-reveal="fade-up">
-        <span class="vnum">04</span>
-        <div>
-          <h4>Environmentally Caring Global Leaders</h4>
-          <p>Develop environmentally caring global leaders.</p>
-        </div>
-      </div>
+    <div class="vision-card" data-reveal="fade-up">
+      <span class="vision-mark">"</span>
+      <p>Every Augustinian Recollect learner is strong in faith and fulfilled in life.</p>
+      <span class="vision-tag">— ICCBI Vision Statement</span>
     </div>
   </div>
 </section>
