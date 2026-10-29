@@ -1787,11 +1787,10 @@
         @supports (touch-action: none) {
             body { touch-action: pan-y; }
         }
-/* ===== DESKTOP / LAPTOP: render like browser zoom (not mobile) ===== */
+/* ===== DESKTOP / LAPTOP: readable scaled layout (not mobile) ===== */
 @media (min-width: 993px) {
     html { zoom: var(--z, 1); }
 
-    /* zoom shrinks vh units too, so divide to keep the hero filling the screen */
     .hero,
     .hero-inner {
         min-height: calc(100vh / var(--z, 1));
@@ -1799,46 +1798,85 @@
     }
 }
 
-/* small laptops (1366x768, 1440, etc.) = your 67% screenshot */
+/* small laptops (1366x768, 1440, etc.) */
 @media (min-width: 993px) and (max-width: 1500px) {
-    :root { --z: .67; }
+    :root { --z: .85; }
 }
 
 /* mid screens (1536, 1600, etc.) */
 @media (min-width: 1501px) and (max-width: 1800px) {
-    :root { --z: .8; }
+    :root { --z: .9; }
 }
 
-/* vw units don't scale with CSS zoom, so lock every vw-based size
-   to its maximum (what real browser zoom produces) */
+/* vw-based sizes don't follow CSS zoom, so set them explicitly */
 @media (min-width: 993px) and (max-width: 1800px) {
     .brand-text .name { font-size: 1rem; }
 
-    .hero h1 { font-size: 5.8rem; }
-    .hero p.lede { font-size: 1.2rem; }
+    .hero h1 { font-size: 4.6rem; }
+    .hero p.lede { font-size: 1.1rem; }
 
     .hero-numbers h2 { font-size: 1.3rem; }
-    .hero-numbers .numbers-sub { font-size: .9rem; }
-    .num-cell-hero .num { font-size: 2.8rem; }
+    .hero-numbers .numbers-sub { font-size: .95rem; }
+    .num-cell-hero .num { font-size: 2.6rem; }
 
-    .section-head h2 { font-size: 2.4rem; }
+    .section-head h2 { font-size: 2.3rem; }
     .section-head p,
     .news .section-head p { font-size: 1.02rem; }
 
     .news-card h4 { font-size: 1.1rem; }
     .about-copy p { font-size: 1.06rem; }
 
-    .plate-body h2 { font-size: 2.2rem; }
+    .plate-body h2 { font-size: 2.1rem; }
     .plate-body .sub { font-size: 1.05rem; }
 
-    .hymn-copy h2 { font-size: 2.4rem; }
+    .hymn-copy h2 { font-size: 2.3rem; }
     .hymn-copy p { font-size: 1rem; }
 
     .cert-info h3 { font-size: 1.4rem; }
-    .cta-band h2 { font-size: 2.8rem; }
+    .cta-band h2 { font-size: 2.6rem; }
+
+    /* ===== readability floor: lift the tiny text ===== */
+    .utility-bar,
+    .utility-left,
+    .utility-right { font-size: .8rem; }
+
+    .brand-text .sub { font-size: .62rem; }
+    .nav-links>li>a { font-size: .95rem; }
+    .nav-links .apply { font-size: .78rem; }
+
+    .eyebrow { font-size: .8rem; }
+    .hero-plaque { font-size: .8rem; }
+    .num-cell-hero .lbl { font-size: .72rem; }
+
+    .nc-meta { font-size: .72rem; }
+    .news-card p { font-size: .95rem; }
+    .news-card .read,
+    .plate-link,
+    .news .section-head .view-all { font-size: .92rem; }
+
+    .plate-body .kicker,
+    .plate-photo .fig { font-size: .72rem; }
+    .plate-body p { font-size: 1rem; }
+
+    .video-caption,
+    .video-sound { font-size: .72rem; }
+
+    .accred-card .body-tag { font-size: .68rem; }
+    .accred-card h4 { font-size: 1rem; }
+    .accred-card p { font-size: .85rem; }
+    .logo-fallback small { font-size: .6rem; }
+
+    .sub-menu .grid a .t { font-size: 1rem; }
+    .sub-menu .grid a .d { font-size: .85rem; }
+
+    footer h5 { font-size: .8rem; }
+    footer a,
+    footer ul li.c-muted { font-size: .95rem; }
+    .footer-brand p { font-size: .92rem; }
+    .footer-bottom { font-size: .78rem; }
 }
 
-/* 1801px and wider: no zoom needed, the original design already fits */
+/* 1801px and wider: no zoom needed */
     </style>
 </head>
 <body>
