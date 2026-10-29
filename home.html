@@ -1787,6 +1787,52 @@
         @supports (touch-action: none) {
             body { touch-action: pan-y; }
         }
+/* ===== LAPTOP SCREENS (1366x768 etc.) ===== */
+@media (min-width: 993px) and (max-width: 1600px) {
+    .wrap {
+        max-width: 100%;
+        margin: 0;
+        padding: 0 48px;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 40px;
+        padding: 60px 0 90px;
+    }
+
+    .hero-text { max-width: 560px; }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+        line-height: 1.08;
+        margin-bottom: 16px;
+    }
+
+    .hero p.lede {
+        font-size: .95rem;
+        margin: 14px 0 24px;
+    }
+
+    .hero-plaque {
+        font-size: .62rem;
+        padding: 6px 12px;
+        margin-bottom: 16px;
+    }
+
+    .btn { padding: 11px 20px; font-size: .82rem; }
+
+    .num-cell-hero .num { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+    .num-cell-hero { padding: 0 14px; }
+
+    nav.main { padding: 8px 0; }
+    .nav-links { gap: 16px; }
+    .nav-links>li>a { font-size: .8rem; }
+    .brand-text .name { font-size: .85rem; }
+
+    .utility-bar .wrap { padding: 5px 48px; }
+}
+        
     </style>
 </head>
 <body>
