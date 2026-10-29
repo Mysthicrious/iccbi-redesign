@@ -1787,62 +1787,29 @@
         @supports (touch-action: none) {
             body { touch-action: pan-y; }
         }
-/* ===== LAPTOP SCREENS (1366x768 etc.) ===== */
-@media (min-width: 993px) and (max-width: 1600px) {
-    .wrap {
-        max-width: 100%;
-        margin: 0;
-        padding: 0 48px;
-    }
+/* ===== DESKTOP / LAPTOP: render like 67% browser zoom (not mobile) ===== */
+@media (min-width: 993px) {
+    html { zoom: var(--z, 1); }
 
-    /* fix: keep side padding on the nav (beats nav.main) */
-    nav.main.wrap { padding: 8px 48px; }
-    .utility-bar .wrap { padding: 5px 48px; }
-
-    /* fix: hero fits inside the visible area */
-    .hero { min-height: calc(100dvh - 90px); }
+    /* zoom shrinks vh units too, so divide to keep the hero filling the screen */
+    .hero,
     .hero-inner {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 40px;
-        min-height: calc(100dvh - 90px);
-        padding: 36px 0 44px;
+        min-height: calc(100vh / var(--z, 1));
+        min-height: calc(100dvh / var(--z, 1));
     }
-
-    .hero-text { max-width: 560px; }
-
-    /* height-aware headline so short screens don't overflow */
-    .hero h1 {
-        font-size: clamp(2rem, min(3.4vw, 6.4vh), 3.2rem);
-        line-height: 1.08;
-        margin-bottom: 12px;
-    }
-
-    .hero p.lede {
-        font-size: .92rem;
-        line-height: 1.6;
-        margin: 10px 0 20px;
-        max-width: 52ch;
-    }
-
-    .hero-plaque {
-        font-size: .62rem;
-        padding: 6px 12px;
-        margin-bottom: 14px;
-    }
-
-    .btn { padding: 11px 20px; font-size: .82rem; }
-
-    /* fix: keep the stats clear of the ? button */
-    .hero-numbers { padding-right: 64px; }
-    .hero-numbers .numbers-sub { margin-bottom: 18px; }
-    .num-cell-hero .num { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
-    .num-cell-hero { padding: 0 14px; }
-
-    .nav-links { gap: 16px; }
-    .nav-links>li>a { font-size: .8rem; }
-    .brand-text .name { font-size: .85rem; }
 }
-        
+
+/* small laptops (1366x768, 1440, etc.) = your 67% screenshot */
+@media (min-width: 993px) and (max-width: 1500px) {
+    :root { --z: .67; }
+}
+
+/* mid screens (1536, 1600, etc.) */
+@media (min-width: 1501px) and (max-width: 1800px) {
+    :root { --z: .8; }
+}
+
+/* 1801px and wider: no zoom needed, the original design already fits */
     </style>
 </head>
 <body>
