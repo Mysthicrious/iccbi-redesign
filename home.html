@@ -1787,7 +1787,7 @@
         @supports (touch-action: none) {
             body { touch-action: pan-y; }
         }
-/* ===== DESKTOP / LAPTOP: render like 67% browser zoom (not mobile) ===== */
+/* ===== DESKTOP / LAPTOP: render like browser zoom (not mobile) ===== */
 @media (min-width: 993px) {
     html { zoom: var(--z, 1); }
 
@@ -1807,6 +1807,35 @@
 /* mid screens (1536, 1600, etc.) */
 @media (min-width: 1501px) and (max-width: 1800px) {
     :root { --z: .8; }
+}
+
+/* vw units don't scale with CSS zoom, so lock every vw-based size
+   to its maximum (what real browser zoom produces) */
+@media (min-width: 993px) and (max-width: 1800px) {
+    .brand-text .name { font-size: 1rem; }
+
+    .hero h1 { font-size: 5.8rem; }
+    .hero p.lede { font-size: 1.2rem; }
+
+    .hero-numbers h2 { font-size: 1.3rem; }
+    .hero-numbers .numbers-sub { font-size: .9rem; }
+    .num-cell-hero .num { font-size: 2.8rem; }
+
+    .section-head h2 { font-size: 2.4rem; }
+    .section-head p,
+    .news .section-head p { font-size: 1.02rem; }
+
+    .news-card h4 { font-size: 1.1rem; }
+    .about-copy p { font-size: 1.06rem; }
+
+    .plate-body h2 { font-size: 2.2rem; }
+    .plate-body .sub { font-size: 1.05rem; }
+
+    .hymn-copy h2 { font-size: 2.4rem; }
+    .hymn-copy p { font-size: 1rem; }
+
+    .cert-info h3 { font-size: 1.4rem; }
+    .cta-band h2 { font-size: 2.8rem; }
 }
 
 /* 1801px and wider: no zoom needed, the original design already fits */
