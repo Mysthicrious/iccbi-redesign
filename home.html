@@ -463,6 +463,7 @@ nav.main {
         }
 
         /* ===== HERO ===== */
+        
         .hero {
             position: relative;
             background: radial-gradient(120% 140% at 15% 0%, #0B3A8F 0%, #0077D6 55%, #0096FF 100%);
@@ -487,6 +488,25 @@ nav.main {
             z-index: 0;
             pointer-events: none;
         }
+
+/* hero -> news gradient blend */
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 200px;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+        rgba(239, 246, 255, 0) 0%,
+        rgba(239, 246, 255, .12) 25%,
+        rgba(239, 246, 255, .4) 55%,
+        rgba(239, 246, 255, .8) 82%,
+        #EFF6FF 100%);
+}
+        
         .hero>.wrap {
             position: relative;
             z-index: 1;
