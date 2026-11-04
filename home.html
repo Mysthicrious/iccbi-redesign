@@ -1883,7 +1883,7 @@ nav.main {
 
 /* 1801px and wider: no zoom needed */
 
-        /* ===== HERO FLOATING ELEMENTS ===== */
+/* ===== HERO FLOATING ELEMENTS ===== */
 .hero-floats {
     position: absolute;
     inset: 0;
@@ -1898,28 +1898,37 @@ nav.main {
     animation: floatY var(--dur, 14s) ease-in-out var(--delay, 0s) infinite alternate;
 }
 
-/* glowing orbs */
+/* soft bubbles */
 .orb {
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(147,197,253,.55), rgba(0,150,255,.12) 60%, transparent 72%);
-    filter: blur(6px);
+    background: radial-gradient(circle at 30% 28%,
+        rgba(255,255,255,.20) 0%,
+        rgba(147,197,253,.08) 45%,
+        rgba(0,150,255,.02) 72%);
+    border: 1px solid rgba(147,197,253,.16);
 }
-.o1 { width: 340px; height: 340px; top: 8%;  left: 52%; --dur: 18s; }
-.o2 { width: 220px; height: 220px; top: 58%; left: 6%;  --dur: 15s; --delay: -4s; }
-.o3 { width: 280px; height: 280px; top: 30%; right: -60px; --dur: 20s; --delay: -8s; }
+.o1 { width: 90px;  height: 90px;  top: 14%; left: 56%; --dur: 16s; }
+.o2 { width: 56px;  height: 56px;  top: 60%; left: 8%;  --dur: 13s; --delay: -4s; }
+.o3 { width: 110px; height: 110px; top: 34%; right: 4%; --dur: 19s; --delay: -8s; }
+.o4 { width: 38px;  height: 38px;  top: 72%; left: 48%; --dur: 12s; --delay: -2s; }
+.o5 { width: 64px;  height: 64px;  top: 20%; left: 78%; --dur: 17s; --delay: -6s; }
+.o6 { width: 30px;  height: 30px;  top: 46%; left: 62%; --dur: 11s; --delay: -9s; }
+.o7 { width: 48px;  height: 48px;  top: 80%; left: 84%; --dur: 15s; --delay: -3s; }
+.o8 { width: 26px;  height: 26px;  top: 10%; left: 30%; --dur: 14s; --delay: -7s; }
 
 /* thin rings */
 .ring {
     border-radius: 50%;
-    border: 1.5px solid rgba(147,197,253,.35);
+    border: 1.5px solid rgba(147,197,253,.2);
     animation-name: floatSpin;
 }
 .r1 { width: 120px; height: 120px; top: 22%; left: 44%; --dur: 22s; }
 .r2 { width: 70px;  height: 70px;  top: 74%; left: 58%; --dur: 17s; --delay: -6s; }
 
 /* small crosses */
-.cross { width: 26px; height: 26px; opacity: .45; animation-name: floatSpin; }
-.cross::before, .cross::after {
+.cross { width: 26px; height: 26px; opacity: .25; animation-name: floatSpin; }
+.cross::before,
+.cross::after {
     content: "";
     position: absolute;
     background: var(--sky-light);
@@ -1928,11 +1937,11 @@ nav.main {
 .cross::before { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
 .cross::after  { top: 34%; left: 0; width: 100%; height: 2px; }
 .c1 { top: 16%; left: 66%; --dur: 19s; }
-.c2 { top: 64%; left: 38%; --dur: 24s; --delay: -9s; transform: scale(.7); }
-.c3 { top: 40%; left: 88%; --dur: 21s; --delay: -3s; transform: scale(1.2); }
+.c2 { top: 64%; left: 38%; width: 18px; height: 18px; --dur: 24s; --delay: -9s; }
+.c3 { top: 40%; left: 88%; width: 32px; height: 32px; --dur: 21s; --delay: -3s; }
 
 /* tiny dots */
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky-light); opacity: .5; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky-light); opacity: .35; }
 .d1 { top: 12%; left: 36%; --dur: 11s; }
 .d2 { top: 52%; left: 74%; --dur: 13s; --delay: -5s; }
 .d3 { top: 82%; left: 24%; --dur: 12s; --delay: -2s; }
@@ -1947,7 +1956,8 @@ nav.main {
 }
 
 @media (max-width: 720px) {
-    .o1, .o3 { width: 200px; height: 200px; }
+    .o3 { width: 70px; height: 70px; }
+    .o6, .o7, .o8,
     .r1, .c2, .d3 { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2023,10 +2033,15 @@ nav.main {
     <div class="nav-overlay" id="navOverlay"></div>
 
     <section class="hero">
-        <div class="hero-floats" aria-hidden="true">
+<div class="hero-floats" aria-hidden="true">
     <span class="fl orb o1"></span>
     <span class="fl orb o2"></span>
     <span class="fl orb o3"></span>
+    <span class="fl orb o4"></span>
+    <span class="fl orb o5"></span>
+    <span class="fl orb o6"></span>
+    <span class="fl orb o7"></span>
+    <span class="fl orb o8"></span>
     <span class="fl ring r1"></span>
     <span class="fl ring r2"></span>
     <span class="fl cross c1"></span>
