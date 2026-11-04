@@ -2043,3 +2043,68 @@ footer ul li.c-muted {
 }
 
 /* 1801px and wider: no zoom needed */
+
+/* ===== NEWS: Facebook feed ===== */
+.news-layout--fb {
+    display: grid;
+    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+}
+
+.news-layout--fb .news-side {
+    position: sticky;
+    top: 110px;
+}
+
+.fb-feed {
+    width: 100%;
+    max-width: 520px;
+}
+
+.fb-frame {
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid var(--rule, #dfe6f1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(20, 50, 110, 0.08);
+}
+
+.fb-frame iframe {
+    display: block;
+    border: 0;
+    max-width: 100%;
+}
+
+.fb-loading {
+    align-self: center;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.fb-open {
+    display: inline-block;
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.fb-open:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+    .news-layout--fb {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .news-layout--fb .news-side {
+        position: static;
+        order: -1; /* text first, feed below */
+    }
+    .fb-feed { max-width: 100%; }
+}
