@@ -1812,6 +1812,76 @@ nav.main {
         @supports (touch-action: none) {
             body { touch-action: pan-y; }
         }
+
+/* ===== SCROLL CUE ===== */
+.scroll-cue {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 26px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    opacity: 0;
+    animation: cueIn 1s ease 1.4s forwards;
+}
+.scroll-cue-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: .6;
+}
+.scroll-cue-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(39, 79, 171, .3);
+    background: rgba(255, 255, 255, .25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .7;
+    transition: opacity .25s ease, background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.scroll-cue-circle svg {
+    width: 18px;
+    height: 18px;
+    animation: cueBounce 2s ease-in-out infinite;
+}
+.scroll-cue:hover .scroll-cue-circle,
+.scroll-cue:focus-visible .scroll-cue-circle {
+    opacity: 1;
+    background: rgba(255, 255, 255, .7);
+    border-color: var(--blue);
+    transform: translateY(2px);
+}
+
+@keyframes cueIn {
+    to { opacity: 1; }
+}
+@keyframes cueBounce {
+    0%, 100% { transform: translateY(-2px); }
+    50%      { transform: translateY(3px); }
+}
+
+/* keep the news heading below the sticky header when jumping */
+.news { scroll-margin-top: var(--header-h, 74px); }
+
+@media (max-width: 720px) {
+    .scroll-cue { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .scroll-cue { animation: none; opacity: 1; }
+    .scroll-cue-circle svg { animation: none; }
+}
+        
 /* ===== DESKTOP / LAPTOP: readable scaled layout (not mobile) ===== */
 @media (min-width: 993px) {
     html { zoom: var(--z, 1); }
@@ -1996,9 +2066,19 @@ nav.main {
                 </div>
             </div>
         </div>
+
+<a href="#latest" class="scroll-cue" aria-label="Scroll to latest news">
+    <span class="scroll-cue-text">Scroll</span>
+    <span class="scroll-cue-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6"/>
+        </svg>
+    </span>
+</a>
+        
     </section>
 
-    <section class="news">
+<section class="news" id="latest">
         <div class="wrap">
             <div class="section-head">
                 <div class="sh-text">
