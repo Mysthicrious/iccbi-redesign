@@ -741,6 +741,53 @@ nav.main {
             transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
             text-decoration: none;
         }
+
+/* ===== NEWS: cards + side text ===== */
+.news-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 48px;
+    align-items: start;
+}
+.news-layout .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.news-side {
+    position: sticky;
+    top: calc(var(--header-h, 74px) + 24px);
+    padding-left: 32px;
+    border-left: 1px solid var(--rule);
+}
+.news-side h2 {
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 8px 0 14px;
+}
+.news-side p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 0 24px;
+}
+
+@media (max-width: 1100px) {
+    .news-layout { grid-template-columns: 1fr; gap: 32px; }
+    .news-side {
+        order: -1;
+        position: static;
+        border-left: none;
+        padding-left: 0;
+    }
+    .news-side h2 { font-size: 1.8rem; }
+}
+@media (max-width: 992px) {
+    .news-layout .news-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+    .news-layout .news-grid { grid-template-columns: 1fr; }
+}
+        
         .news-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow);
@@ -2079,15 +2126,8 @@ nav.main {
     </section>
 
 <section class="news" id="latest">
-        <div class="wrap">
-            <div class="section-head">
-                <div class="sh-text">
-                    <span class="eyebrow c-blue" data-reveal="fade-up">The Campus Chronicle</span>
-                    <h2 class="c-ink" data-reveal="fade-up">Latest from ICCBI.</h2>
-                </div>
-                <a class="view-all" href="https://www.facebook.com/ICCBalayanIncOfficial" data-reveal="fade-up">View all news</a>
-            </div>
-
+    <div class="wrap">
+        <div class="news-layout">
              <div class="news-grid" id="newsGrid" data-reveal-stagger>
                
                 <a class="news-card" href="https://www.facebook.com/ICCBalayanIncOfficial" data-reveal="fade-up">
@@ -2140,6 +2180,14 @@ nav.main {
                         <span class="read">View highlights</span>
                     </div>
                 </a>
+            </div>
+            <aside class="news-side" data-reveal="fade-up">
+                <span class="eyebrow c-blue">The Campus Chronicle</span>
+                <h2 class="c-ink">Latest from ICCBI.</h2>
+                <p class="c-ink-soft">Announcements, milestones and campus life from Immaculate Conception College of Balayan, straight from our official Facebook page.</p>
+                <a class="btn btn-ghost c-ink" href="https://www.facebook.com/ICCBalayanIncOfficial">View all news</a>
+            </aside>
+
             </div>
         </div>
     </section>
