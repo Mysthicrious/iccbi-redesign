@@ -1,1 +1,317 @@
+<?php require __DIR__ . '/includes/auth.php'; require_login(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard · ICCBI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3fc; --card:#fff; --ink:#0f1b3d; --soft:#5d6b8c; --line:#dde5f3;
+  --blue:#2450c8; --navy:#12285e; --sky:#e3ecfd; --gold:#f2b632;
+  --ok:#17803d; --okbg:#e2f5e8; --warn:#9a6700; --warnbg:#fff3d1; --bad:#b42318; --badbg:#fde4e1;
+  --sw:252px; --sw-min:76px; --r:16px;
+}
+*{box-sizing:border-box;margin:0}
+html{height:100%}
+body{min-height:100%;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;letter-spacing:-.01em}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:8px}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
+/* ---------- Sidebar ---------- */
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sw);background:var(--navy);color:#fff;display:flex;flex-direction:column;padding:18px 14px;z-index:40;transition:width .22s ease,transform .22s ease}
+.sb-head{display:flex;align-items:center;gap:10px;min-height:44px;margin-bottom:22px;padding:0 6px}
+.sb-logo{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;font:700 12px Sora;color:var(--navy)}
+.sb-title{font:600 14px/1.2 Sora;white-space:nowrap}
+.sb-title small{display:block;font:400 11px Inter;color:#a9b9e0;margin-top:2px}
+.sb-toggle{margin-left:auto;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#c9d6f5}
+.sb-toggle:hover{background:rgba(255,255,255,.1)}
+.sb-toggle .ico{transition:transform .22s}
+nav ul{list-style:none;padding:0;display:grid;gap:4px}
+.nav-link{display:flex;align-items:center;gap:14px;height:44px;padding:0 14px;border-radius:12px;color:#c9d6f5;text-decoration:none;white-space:nowrap;position:relative}
+.nav-link:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-link.active{background:#fff;color:var(--navy);font-weight:600}
+.nav-link .soon{margin-left:auto;font-size:11px;background:var(--gold);color:#3b2a00;border-radius:99px;padding:1px 8px;font-weight:600}
+.sb-foot{margin-top:auto;display:grid;gap:4px}
+.nav-link.out{color:#ffb4ab}
+
+/* collapsed (desktop): icons only */
+body.collapsed .sidebar{width:var(--sw-min)}
+body.collapsed .sb-title,body.collapsed .label,body.collapsed .soon{display:none}
+body.collapsed .sb-head{flex-direction:column;gap:10px;margin-bottom:18px}
+body.collapsed .sb-toggle{margin:0}
+body.collapsed .sb-toggle .ico{transform:rotate(180deg)}
+body.collapsed .nav-link{justify-content:center;padding:0}
+body.collapsed .nav-link[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:calc(100% + 12px);background:var(--ink);color:#fff;font-size:12px;padding:4px 10px;border-radius:8px;white-space:nowrap}
+
+/* ---------- Main ---------- */
+.main{margin-left:var(--sw);padding:20px 28px 40px;transition:margin .22s ease}
+body.collapsed .main{margin-left:var(--sw-min)}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.burger{display:none;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);place-items:center}
+.search{flex:1;max-width:420px;position:relative}
+.search .ico{position:absolute;left:14px;top:12px;color:var(--soft);width:18px;height:18px}
+.search input{width:100%;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 14px 0 42px;font:inherit;color:inherit}
+.user{margin-left:auto;display:flex;align-items:center;gap:10px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font:600 14px Sora}
+.user-meta{line-height:1.25}
+.user-meta b{display:block;font-weight:600}
+.user-meta span{font-size:12px;color:var(--soft)}
+
+.hello small{color:var(--soft)}
+.hello h1{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:4px 0 6px}
+.hello p{color:var(--soft);max-width:52ch}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;margin-top:26px;align-items:start}
+.card{background:var(--card);border-radius:var(--r);padding:22px;border:1px solid var(--line)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.card-head h2{font-size:18px}
+.card-head p{font-size:13px;color:var(--soft)}
+.mini-search{height:36px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;width:190px;max-width:100%}
+
+/* ---------- Activity table ---------- */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th{font:500 12px Inter;color:var(--soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:13px 10px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.who{display:flex;align-items:center;gap:10px}
+.who .avatar{width:32px;height:32px;font-size:12px;background:var(--sky);color:var(--blue)}
+.who small{display:block;color:var(--soft);font-size:12px}
+.pill{display:inline-block;font-size:12px;font-weight:500;padding:2px 10px;border-radius:99px}
+.pill.ok{background:var(--okbg);color:var(--ok)} .pill.warn{background:var(--warnbg);color:var(--warn)} .pill.bad{background:var(--badbg);color:var(--bad)}
+.empty{padding:28px 0;text-align:center;color:var(--soft)}
+
+/* ---------- Calendar ---------- */
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-nav h2{font-size:17px}
+.cal-btn{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center}
+.cal-btn:hover{background:var(--sky)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal .dow{font-size:12px;color:var(--soft);padding:6px 0}
+.day{aspect-ratio:1;display:grid;place-items:center;border-radius:10px;font-size:14px;position:relative}
+.day.muted{color:#aab4cc}
+.day.today{background:var(--blue);color:#fff;font-weight:600}
+.day.has::after{content:"";position:absolute;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.day.today.has::after{background:#fff}
+.upcoming{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:10px}
+.upcoming h3{font-size:14px}
+.ev{display:flex;gap:12px;align-items:center;font-size:14px}
+.ev .d{width:42px;height:42px;border-radius:11px;background:var(--sky);color:var(--blue);display:grid;place-items:center;text-align:center;font:600 15px/1 Sora;flex:none}
+.ev .d small{display:block;font:500 10px Inter;margin-top:2px}
+.ev span{color:var(--soft);font-size:12px;display:block}
+
+/* ---------- Sign-in ---------- */
+.gate{position:fixed;inset:0;background:rgba(15,27,61,.55);display:none;place-items:center;z-index:100;padding:16px}
+.gate.show{display:grid}
+.gate form{background:#fff;border-radius:20px;padding:28px;width:100%;max-width:380px;display:grid;gap:12px}
+.gate h2{font-size:22px}
+.gate p{color:var(--soft);font-size:14px}
+.gate label{font-size:13px;font-weight:500;display:grid;gap:4px}
+.gate input{height:44px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font:inherit}
+.btn{height:46px;border-radius:12px;background:var(--blue);color:#fff;font-weight:600}
+.btn:hover{background:var(--navy)}
+.scrim{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1180px){ .grid{grid-template-columns:1fr} .side-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px} }
+@media (max-width:860px){
+  .sidebar{transform:translateX(-100%);width:var(--sw)!important;box-shadow:0 0 40px rgba(0,0,0,.25)}
+  body.drawer .sidebar{transform:none}
+  body.drawer .scrim{display:block;position:fixed;inset:0;background:rgba(15,27,61,.45);z-index:35}
+  .main,body.collapsed .main{margin-left:0;padding:16px 16px 32px}
+  .burger{display:grid}
+  .sb-toggle{display:none}
+  body.collapsed .sb-title,body.collapsed .label{display:revert}
+  body.collapsed .sb-head{flex-direction:row}
+  body.collapsed .nav-link{justify-content:flex-start;padding:0 14px}
+  .user-meta{display:none}
+  .search{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2V5z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M16 8l4 4-4 4M20 12H9"/></symbol>
+</svg>
+
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+  <div class="sb-head">
+    <div class="sb-logo">ICC</div>
+    <div class="sb-title">ICCBI Admin<small>Staff dashboard</small></div>
+    <button class="sb-toggle" id="sbToggle" aria-label="Toggle sidebar labels" aria-expanded="true"><svg class="ico"><use href="#i-chev"/></svg></button>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="nav-link active" href="dashboard.php" data-tip="Dashboard" aria-current="page"><svg class="ico"><use href="#i-dash"/></svg><span class="label">Dashboard</span></a></li>
+      <li><a class="nav-link" href="news-desk.php" data-tip="News Desk"><svg class="ico"><use href="#i-news"/></svg><span class="label">News Desk</span><span class="soon">Soon</span></a></li>
+    </ul>
+  </nav>
+  <div class="sb-foot">
+    <button class="nav-link out" id="logout" data-tip="Sign out"><svg class="ico"><use href="#i-out"/></svg><span class="label">Sign out</span></button>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<div class="main">
+  <header class="topbar">
+    <button class="burger" id="burger" aria-label="Open menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+    <div class="search"><svg class="ico"><use href="#i-search"/></svg><input type="search" placeholder="Search activity…" id="globalSearch" aria-label="Search activity"></div>
+    <div class="user">
+      <div class="user-meta"><b id="uName">—</b><span id="uMail"></span></div>
+      <div class="avatar" id="uAvatar">?</div>
+    </div>
+  </header>
+
+  <section class="hello">
+    <small id="today"></small>
+    <h1 id="greet">Good day,</h1>
+    <p>See what has happened on the admin side and what is coming up on the school calendar.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card" aria-labelledby="logTitle">
+      <div class="card-head">
+        <div><h2 id="logTitle">Activity log</h2><p id="logCount"></p></div>
+        <input class="mini-search" id="logSearch" type="search" placeholder="Filter…" aria-label="Filter activity log">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>User</th><th>Activity</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="logBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="side-col">
+      <section class="card" aria-labelledby="calTitle">
+        <div class="cal-nav">
+          <button class="cal-btn" id="prev" aria-label="Previous month"><svg class="ico"><use href="#i-chev"/></svg></button>
+          <h2 id="calTitle"></h2>
+          <button class="cal-btn" id="next" aria-label="Next month"><svg class="ico"><use href="#i-chev-r"/></svg></button>
+        </div>
+        <div class="cal" id="cal"></div>
+        <div class="upcoming"><h3>Coming up</h3><div id="events"></div></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){return document.getElementById(id)};
+  var SERVER_USER = <?= json_encode(['name'=>$_SESSION['user']['name'],'email'=>$_SESSION['user']['email']], JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT) ?>;
+  var KEY_LOG='iccbi_log', KEY_SB='iccbi_sidebar';
+  var store = {
+    get:function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},
+    set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
+    del:function(k){try{localStorage.removeItem(k)}catch(e){}}
+  };
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function initials(n){return n.trim().split(/\s+/).slice(0,2).map(function(w){return w[0]}).join('').toUpperCase()||'?'}
+  function fmt(iso){return new Date(iso).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}
+
+  /* ---- Sidebar ---- */
+  var mobile = window.matchMedia('(max-width:860px)');
+  if(store.get(KEY_SB)==='collapsed') document.body.classList.add('collapsed');
+  $('sbToggle').addEventListener('click',function(){
+    var c=document.body.classList.toggle('collapsed');
+    store.set(KEY_SB,c?'collapsed':'full');
+    this.setAttribute('aria-expanded',String(!c));
+  });
+  function drawer(open){document.body.classList.toggle('drawer',open)}
+  $('burger').addEventListener('click',function(){drawer(true)});
+  $('scrim').addEventListener('click',function(){drawer(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')drawer(false)});
+  mobile.addEventListener('change',function(){drawer(false)});
+
+  /* ---- Activity log ---- */
+  function seedLog(){
+    var now=Date.now(),h=36e5;
+    return [
+      {u:'Registrar Office',a:'Updated enrollment page',t:new Date(now-5*h).toISOString(),s:'ok'},
+      {u:'Guidance Office',a:'Submitted event for approval',t:new Date(now-27*h).toISOString(),s:'warn'},
+      {u:'Library',a:'Failed upload: schedule.pdf',t:new Date(now-50*h).toISOString(),s:'bad'},
+      {u:'Registrar Office',a:'Published announcement',t:new Date(now-76*h).toISOString(),s:'ok'}
+    ];
+  }
+  function getLog(){var l=store.get(KEY_LOG);if(!l){l=seedLog();store.set(KEY_LOG,l)}return l}
+  function addLog(entry){var l=getLog();l.unshift(entry);store.set(KEY_LOG,l.slice(0,50))}
+  var STATUS={ok:'Completed',warn:'Pending',bad:'Failed'};
+  function renderLog(){
+    var q=($('logSearch').value||$('globalSearch').value||'').toLowerCase();
+    var rows=getLog().filter(function(r){return (r.u+' '+r.a).toLowerCase().indexOf(q)>-1}).slice(0,10);
+    $('logCount').textContent=rows.length+' recent '+(rows.length===1?'entry':'entries');
+    $('logBody').innerHTML=rows.length?rows.map(function(r){
+      return '<tr><td><div class="who"><div class="avatar">'+esc(initials(r.u))+'</div>'+esc(r.u)+'</div></td>'+
+        '<td>'+esc(r.a)+'</td><td>'+fmt(r.t)+'</td><td><span class="pill '+r.s+'">'+STATUS[r.s]+'</span></td></tr>';
+    }).join(''):'<tr><td colspan="4" class="empty">No activity matches your search.</td></tr>';
+  }
+  $('logSearch').addEventListener('input',function(){$('globalSearch').value='';renderLog()});
+  $('globalSearch').addEventListener('input',function(){$('logSearch').value='';renderLog()});
+
+  /* ---- Sign-in detection ---- */
+  function showUser(u){
+    $('uName').textContent=u.name; $('uMail').textContent=u.email; $('uAvatar').textContent=initials(u.name);
+    var h=new Date().getHours();
+    $('greet').textContent=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', '+u.name.split(' ')[0]+'.';
+  }
+  function gate(){ showUser(SERVER_USER); }
+  $('logout').addEventListener('click',function(){ location.href='logout.php'; });
+
+  /* ---- Calendar ---- */
+  var EVENTS=[ /* edit these: yyyy-mm-dd */
+    {d:'2026-11-09',t:'Faculty meeting',n:'Main conference room'},
+    {d:'2026-11-20',t:'Midterm grades due',n:'Registrar'},
+    {d:'2026-12-08',t:'Feast of the Immaculate Conception',n:'Whole school'},
+    {d:'2026-12-18',t:'Christmas program',n:'Gymnasium'}
+  ];
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var view=new Date(); view.setDate(1);
+  function key(y,m,d){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
+  function renderCal(){
+    var y=view.getFullYear(), m=view.getMonth(), now=new Date();
+    $('calTitle').textContent=MONTHS[m]+' '+y;
+    var first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate(), prevDays=new Date(y,m,0).getDate();
+    var html=['S','M','T','W','T','F','S'].map(function(d){return '<div class="dow">'+d+'</div>'}).join('');
+    for(var i=first-1;i>=0;i--) html+='<div class="day muted">'+(prevDays-i)+'</div>';
+    for(var d=1;d<=days;d++){
+      var k=key(y,m,d), cls='day';
+      if(d===now.getDate()&&m===now.getMonth()&&y===now.getFullYear()) cls+=' today';
+      if(EVENTS.some(function(e){return e.d===k})) cls+=' has';
+      html+='<div class="'+cls+'">'+d+'</div>';
+    }
+    var total=first+days, tail=(7-total%7)%7;
+    for(var j=1;j<=tail;j++) html+='<div class="day muted">'+j+'</div>';
+    $('cal').innerHTML=html;
+    var list=EVENTS.filter(function(e){return e.d.slice(0,7)===key(y,m,1).slice(0,7)});
+    $('events').innerHTML=list.length?list.map(function(e){
+      var p=e.d.split('-');
+      return '<div class="ev"><div class="d">'+Number(p[2])+'<small>'+MONTHS[m].slice(0,3)+'</small></div><div>'+esc(e.t)+'<span>'+esc(e.n)+'</span></div></div>';
+    }).join(''):'<p style="color:var(--soft);font-size:14px">No events this month.</p>';
+  }
+  $('prev').addEventListener('click',function(){view.setMonth(view.getMonth()-1);renderCal()});
+  $('next').addEventListener('click',function(){view.setMonth(view.getMonth()+1);renderCal()});
+
+  $('today').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  if(!sessionStorage.getItem('iccbi_seen')){addLog({u:SERVER_USER.name,a:'Signed in',t:new Date().toISOString(),s:'ok'});try{sessionStorage.setItem('iccbi_seen','1')}catch(e){}}
+  renderLog(); renderCal(); gate();
+})();
+</script>
+</body>
+</html>
