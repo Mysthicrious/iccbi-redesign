@@ -1882,7 +1882,80 @@ nav.main {
 }
 
 /* 1801px and wider: no zoom needed */
+
+        /* ===== HERO FLOATING ELEMENTS ===== */
+.hero-floats {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.fl {
+    position: absolute;
+    display: block;
+    will-change: transform;
+    animation: floatY var(--dur, 14s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+/* glowing orbs */
+.orb {
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(147,197,253,.55), rgba(0,150,255,.12) 60%, transparent 72%);
+    filter: blur(6px);
+}
+.o1 { width: 340px; height: 340px; top: 8%;  left: 52%; --dur: 18s; }
+.o2 { width: 220px; height: 220px; top: 58%; left: 6%;  --dur: 15s; --delay: -4s; }
+.o3 { width: 280px; height: 280px; top: 30%; right: -60px; --dur: 20s; --delay: -8s; }
+
+/* thin rings */
+.ring {
+    border-radius: 50%;
+    border: 1.5px solid rgba(147,197,253,.35);
+    animation-name: floatSpin;
+}
+.r1 { width: 120px; height: 120px; top: 22%; left: 44%; --dur: 22s; }
+.r2 { width: 70px;  height: 70px;  top: 74%; left: 58%; --dur: 17s; --delay: -6s; }
+
+/* small crosses */
+.cross { width: 26px; height: 26px; opacity: .45; animation-name: floatSpin; }
+.cross::before, .cross::after {
+    content: "";
+    position: absolute;
+    background: var(--sky-light);
+    border-radius: 2px;
+}
+.cross::before { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.cross::after  { top: 34%; left: 0; width: 100%; height: 2px; }
+.c1 { top: 16%; left: 66%; --dur: 19s; }
+.c2 { top: 64%; left: 38%; --dur: 24s; --delay: -9s; transform: scale(.7); }
+.c3 { top: 40%; left: 88%; --dur: 21s; --delay: -3s; transform: scale(1.2); }
+
+/* tiny dots */
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky-light); opacity: .5; }
+.d1 { top: 12%; left: 36%; --dur: 11s; }
+.d2 { top: 52%; left: 74%; --dur: 13s; --delay: -5s; }
+.d3 { top: 82%; left: 24%; --dur: 12s; --delay: -2s; }
+
+@keyframes floatY {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(18px, -34px, 0); }
+}
+@keyframes floatSpin {
+    from { transform: translate3d(0, 0, 0) rotate(0deg); }
+    to   { transform: translate3d(-20px, -28px, 0) rotate(40deg); }
+}
+
+@media (max-width: 720px) {
+    .o1, .o3 { width: 200px; height: 200px; }
+    .r1, .c2, .d3 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fl { animation: none !important; }
+}
     </style>
+
+    
 </head>
 <body>
     <header class="site" id="siteHeader">
@@ -1950,6 +2023,19 @@ nav.main {
     <div class="nav-overlay" id="navOverlay"></div>
 
     <section class="hero">
+        <div class="hero-floats" aria-hidden="true">
+    <span class="fl orb o1"></span>
+    <span class="fl orb o2"></span>
+    <span class="fl orb o3"></span>
+    <span class="fl ring r1"></span>
+    <span class="fl ring r2"></span>
+    <span class="fl cross c1"></span>
+    <span class="fl cross c2"></span>
+    <span class="fl cross c3"></span>
+    <span class="fl dot d1"></span>
+    <span class="fl dot d2"></span>
+    <span class="fl dot d3"></span>
+</div>
         <div class="wrap">
             <div class="hero-inner">
                 <div class="hero-text">
