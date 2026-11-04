@@ -700,6 +700,18 @@ nav.main {
         }
 
         .news { background: var(--parchment); }
+        /* news = one full screen under the header */
+@media (min-width: 993px) {
+    .news {
+        min-height: calc(100vh / var(--z, 1) - var(--header-h, 80px));
+        min-height: calc(100dvh / var(--z, 1) - var(--header-h, 80px));
+        display: flex;
+        align-items: center;
+    }
+    .news > .wrap {
+        width: 100%;
+    }
+}
         .news .section-head {
             display: flex;
             align-items: flex-end;
